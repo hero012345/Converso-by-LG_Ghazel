@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Converso by LG_GHAZEL</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        min-height: 100vh;
+        padding: 15px;
+        color: #e2e8f0;
+        line-height: 1.5;
+        font-size: 16px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(15, 23, 42, 0.95);
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        border: 1px solid rgba(100, 116, 139, 0.2);
+      }
+
+      header {
+        background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+        color: #f1f5f9;
+        padding: 25px 20px;
+        text-align: center;
+        position: relative;
+        border-bottom: 1px solid rgba(100, 116, 139, 0.3);
+      }
+
+      h1 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+        font-weight: 600;
+        background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.3;
+      }
+
+      .subtitle {
+        font-size: 1em;
+        opacity: 0.8;
+        color: #cbd5e1;
+        margin-bottom: 15px;
+      }
+
+      .main-content {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+      }
+
+      .sidebar {
+        background: rgba(30, 41, 59, 0.8);
+        padding: 15px;
+        border-bottom: 1px solid rgba(100, 116, 139, 0.3);
+        overflow-x: auto;
+        display: flex;
+        gap: 8px;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .nav-btn {
+        flex: 0 0 auto;
+        padding: 12px 16px;
+        background: rgba(51, 65, 85, 0.6);
+        border: 1px solid rgba(100, 116, 139, 0.3);
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 14px;
+        color: #e2e8f0;
+        font-weight: 500;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        min-width: max-content;
+      }
+
+      .nav-btn.active {
+        background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+        color: #0f172a;
+        border-color: #38bdf8;
+        box-shadow: 0 2px 10px rgba(56, 189, 248, 0.3);
+      }
+
+      .nav-btn:active {
+        transform: scale(0.98);
+      }
+
+      .content {
+        padding: 20px;
+        background: rgba(15, 23, 42, 0.4);
+      }
+
+      .section {
+        display: none;
+      }
+
+      .section.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #38bdf8;
+        font-size: 1em;
+      }
+
+      input,
+      select,
+      button {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid rgba(100, 116, 139, 0.4);
+        border-radius: 12px;
+        font-size: 16px;
+        background: rgba(30, 41, 59, 0.8);
+        color: #f1f5f9;
+        font-family: inherit;
+        transition: all 0.2s ease;
+        -webkit-appearance: none;
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #38bdf8;
+        box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.1);
+      }
+
+      button {
+        background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+        color: #0f172a;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+
+      button:active {
+        transform: scale(0.98);
+      }
+
+      .precision-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin: 15px 0;
+      }
+
+      .precision-btn {
+        padding: 12px;
+        background: rgba(51, 65, 85, 0.6);
+        border: 1px solid rgba(100, 116, 139, 0.3);
+        border-radius: 8px;
+        color: #e2e8f0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      .precision-btn.active {
+        background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+        color: #0f172a;
+        border-color: #38bdf8;
+      }
+
+      .radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 15px 0;
+      }
+
+      .radio-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+        background: rgba(51, 65, 85, 0.4);
+        border: 1px solid rgba(100, 116, 139, 0.3);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .radio-label:hover {
+        background: rgba(51, 65, 85, 0.6);
+      }
+
+      .radio-label.active {
+        background: rgba(56, 189, 248, 0.1);
+        border-color: #38bdf8;
+      }
+
+      .radio-input {
+        width: auto;
+        margin: 0;
+      }
+
+      .result-box {
+        background: rgba(30, 41, 59, 0.6);
+        border-radius: 14px;
+        padding: 20px;
+        margin-top: 20px;
+        border: 1px solid rgba(100, 116, 139, 0.3);
+      }
+
+      .result-box h3 {
+        color: #38bdf8;
+        margin-bottom: 15px;
+        font-size: 1.3em;
+        text-align: center;
+      }
+
+      .steps {
+        background: rgba(51, 65, 85, 0.4);
+        border-radius: 10px;
+        padding: 15px;
+        margin: 12px 0;
+        font-family: "Menlo", "Monaco", "Courier New", monospace;
+        white-space: pre-wrap;
+        color: #cbd5e1;
+        border: 1px solid rgba(100, 116, 139, 0.2);
+        font-size: 13px;
+        line-height: 1.4;
+        overflow-x: auto;
+        word-break: break-word;
+      }
+
+      .binary-display {
+        font-family: "Menlo", "Monaco", "Courier New", monospace;
+        background: rgba(15, 23, 42, 0.8);
+        color: #38bdf8;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 10px 0;
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        font-size: 14px;
+        font-weight: 500;
+        word-break: break-all;
+        line-height: 1.4;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+        background: rgba(30, 41, 59, 0.6);
+        border-radius: 10px;
+        overflow: hidden;
+        font-size: 14px;
+      }
+
+      .table th,
+      .table td {
+        border: 1px solid rgba(100, 116, 139, 0.3);
+        padding: 10px 8px;
+        text-align: center;
+        color: #e2e8f0;
+        word-break: break-word;
+      }
+
+      .table th {
+        background: rgba(56, 189, 248, 0.1);
+        color: #38bdf8;
+        font-weight: 600;
+        font-size: 13px;
+      }
+
+      .success {
+        color: #34d399;
+      }
+      .error {
+        color: #f87171;
+      }
+      .warning {
+        color: #fbbf24;
+      }
+
+      .conversion-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .conversion-card {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid rgba(100, 116, 139, 0.3);
+        border-radius: 12px;
+        padding: 18px;
+        transition: all 0.2s ease;
+      }
+
+      .conversion-card:active {
+        transform: scale(0.98);
+      }
+
+      .conversion-card h4 {
+        color: #38bdf8;
+        margin-bottom: 12px;
+        font-size: 1.1em;
+        font-weight: 500;
+        text-align: center;
+      }
+
+      .footer {
+        background: rgba(30, 41, 59, 0.8);
+        color: #cbd5e1;
+        text-align: center;
+        padding: 25px 20px;
+        margin-top: 25px;
+        border-top: 1px solid rgba(100, 116, 139, 0.3);
+      }
+
+      .developer {
+        font-size: 1em;
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+
+      .developer a {
+        color: #38bdf8;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .copyright {
+        font-size: 0.85em;
+        opacity: 0.7;
+        color: #94a3b8;
+      }
+
+      .donation-container {
+        margin-top: 15px;
+      }
+
+      .donation-btn {
+        background: linear-gradient(135deg, #34d399, #10b981);
+        color: #064e3b;
+        border: none;
+        padding: 14px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 15px;
+        width: 100%;
+        margin: 10px 0;
+      }
+
+      .alert-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 23, 42, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        padding: 20px;
+      }
+
+      .alert-box {
+        background: linear-gradient(135deg, #1e293b, #334155);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        border-radius: 16px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .alert-title {
+        color: #38bdf8;
+        font-size: 1.4em;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .account-info {
+        background: rgba(30, 41, 59, 0.8);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 15px 0;
+      }
+
+      .account-number {
+        font-size: 1.3em;
+        color: #34d399;
+        font-weight: 600;
+        margin: 10px 0;
+        font-family: "Menlo", monospace;
+        word-break: break-all;
+      }
+
+      .account-label {
+        color: #cbd5e1;
+        font-size: 0.9em;
+        margin-bottom: 5px;
+        opacity: 0.8;
+      }
+
+      .alert-close-btn {
+        background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+        color: #0f172a;
+        border: none;
+        padding: 14px 30px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        margin-top: 15px;
+        width: 100%;
+      }
+
+      .long-number {
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        word-break: break-all;
+        line-height: 1.3;
+      }
+
+      .scroll-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 10px 0;
+      }
+
+      @supports (-webkit-touch-callout: none) {
+        input,
+        select,
+        button {
+          font-size: 16px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        body {
+          padding: 10px;
+          font-size: 15px;
+        }
+
+        header {
+          padding: 20px 15px;
+        }
+
+        h1 {
+          font-size: 1.6em;
+        }
+
+        .content {
+          padding: 15px;
+        }
+
+        .nav-btn {
+          padding: 10px 12px;
+          font-size: 13px;
+        }
+
+        .binary-display {
+          font-size: 13px;
+          padding: 12px;
+        }
+
+        .steps {
+          font-size: 12px;
+          padding: 12px;
+        }
+
+        .precision-buttons {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .main-content {
+          display: grid;
+          grid-template-columns: 280px 1fr;
+        }
+
+        .sidebar {
+          flex-direction: column;
+          border-right: 1px solid rgba(100, 116, 139, 0.3);
+          border-bottom: none;
+          overflow-x: visible;
+        }
+
+        .nav-btn {
+          width: 100%;
+        }
+
+        .precision-buttons {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      @media (max-height: 500px) and (orientation: landscape) {
+        .sidebar {
+          padding: 10px 15px;
+        }
+
+        .nav-btn {
+          padding: 8px 12px;
+          font-size: 13px;
+        }
+
+        .content {
+          padding: 15px;
+        }
+      }
+
+      .scrollable {
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .scrollable::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 title="the V03">Converso</h1>
+        <div class="subtitle">Outils complets de conversion numérique</div>
+
+        <!-- Bouton Don -->
+        <div class="donation-container">
+          <button class="donation-btn" onclick="showDonationInfo()">
+            ❤️ Faire un Don
+          </button>
+        </div>
+      </header>
+
+      <div class="main-content">
+        <div class="sidebar">
+          <button class="nav-btn active" data-section="entiers">
+            Nombres Entiers
+          </button>
+          <button class="nav-btn" data-section="virgule-fixe">
+            Virgule Fixe
+          </button>
+          <button class="nav-btn" data-section="virgule-flottante">
+            Virgule Flottante
+          </button>
+          <button class="nav-btn" data-section="conversion-base">
+            Conversion de Base
+          </button>
+          <button class="nav-btn" data-section="base-commune">
+            Base Commune
+          </button>
+          <button class="nav-btn" data-section="tableau-bases">
+            Tableau Multi-Bases
+          </button>
+        </div>
+
+        <div class="content">
+          <!-- Section Nombres Entiers -->
+          <div id="entiers" class="section active">
+            <h2>Conversion de Nombres Entiers</h2>
+            <div class="form-group">
+              <label for="entier-input">Nombre entier :</label>
+              <input type="number" id="entier-input" value="-13" />
+            </div>
+            <div class="form-group">
+              <label for="bits-input">Nombre de bits :</label>
+              <select id="bits-input">
+                <option value="8">8 bits</option>
+                <option value="16">16 bits</option>
+                <option value="32" selected>32 bits</option>
+                <option value="64">64 bits</option>
+              </select>
+            </div>
+            <button id="btn-entier">Convertir</button>
+            <div id="entier-result"></div>
+          </div>
+
+          <!-- Section Virgule Fixe avec précision 16 bits -->
+          <div id="virgule-fixe" class="section">
+            <h2>Conversion Virgule Fixe</h2>
+            <div class="form-group">
+              <label for="reel-input">Nombre réel :</label>
+              <input type="number" step="any" id="reel-input" value="13.625" />
+            </div>
+
+            <div class="form-group">
+              <label>Précision rapide :</label>
+              <div class="precision-buttons">
+                <button
+                  class="precision-btn"
+                  data-bits-entier="8"
+                  data-bits-fraction="8"
+                >
+                  8.8 bits
+                </button>
+                <button
+                  class="precision-btn"
+                  data-bits-entier="16"
+                  data-bits-fraction="16"
+                >
+                  16.16 bits
+                </button>
+                <button
+                  class="precision-btn active"
+                  data-bits-entier="8"
+                  data-bits-fraction="16"
+                >
+                  8.16 bits
+                </button>
+                <button
+                  class="precision-btn"
+                  data-bits-entier="16"
+                  data-bits-fraction="8"
+                >
+                  16.8 bits
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="bits-entier">Bits partie entière :</label>
+              <input
+                type="number"
+                id="bits-entier"
+                value="8"
+                min="1"
+                max="32"
+              />
+            </div>
+            <div class="form-group">
+              <label for="bits-fraction">Bits partie fractionnaire :</label>
+              <input
+                type="number"
+                id="bits-fraction"
+                value="16"
+                min="1"
+                max="32"
+              />
+            </div>
+            <button id="btn-virgule-fixe">Convertir</button>
+            <div id="virgule-fixe-result"></div>
+          </div>
+
+          <!-- Section Virgule Flottante -->
+          <div id="virgule-flottante" class="section">
+            <h2>Conversion Virgule Flottante IEEE 754</h2>
+            <div class="form-group">
+              <label for="float-input">Nombre réel :</label>
+              <input
+                type="number"
+                step="any"
+                id="float-input"
+                value="-13.625"
+              />
+            </div>
+            <div class="form-group">
+              <label>Précision :</label>
+              <div class="radio-group">
+                <label class="radio-label active">
+                  <input
+                    type="radio"
+                    name="precision"
+                    value="simple"
+                    class="radio-input"
+                    checked
+                  />
+                  Simple précision (32 bits)
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="radio"
+                    name="precision"
+                    value="double"
+                    class="radio-input"
+                  />
+                  Double précision (64 bits)
+                </label>
+              </div>
+            </div>
+            <button id="btn-virgule-flottante">Convertir</button>
+            <div id="virgule-flottante-result"></div>
+          </div>
+
+          <!-- Section Conversion de Base -->
+          <div id="conversion-base" class="section">
+            <h2>Conversion entre Bases Numériques</h2>
+            <div class="form-group">
+              <label for="nombre-base">Nombre :</label>
+              <input type="text" id="nombre-base" value="1A3" />
+            </div>
+            <div class="form-group">
+              <label for="base-source">Base source (2-36) :</label>
+              <input
+                type="number"
+                id="base-source"
+                value="16"
+                min="2"
+                max="36"
+              />
+            </div>
+            <div class="form-group">
+              <label for="base-cible">Base cible (2-36) :</label>
+              <input
+                type="number"
+                id="base-cible"
+                value="10"
+                min="2"
+                max="36"
+              />
+            </div>
+            <button id="btn-conversion-base">Convertir</button>
+            <div id="conversion-base-result"></div>
+          </div>
+
+          <!-- Section Base Commune -->
+          <div id="base-commune" class="section">
+            <h2>Trouver la Base Inconnue</h2>
+            <div class="form-group">
+              <label for="nombre1-base">Nombre décimal (base 10) :</label>
+              <input type="text" id="nombre1-base" value="5" />
+              <small style="color: #94a3b8; font-size: 0.9em"
+                >Ce nombre est en base 10</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="nombre2-base">Nombre avec base inconnue :</label>
+              <input type="text" id="nombre2-base" value="101" />
+              <small style="color: #94a3b8; font-size: 0.9em"
+                >Trouver la base X où ce nombre = le nombre décimal</small
+              >
+            </div>
+            <button id="btn-base-commune">Trouver la Base</button>
+            <div id="base-commune-result"></div>
+          </div>
+
+          <!-- Section Tableau Multi-Bases -->
+          <div id="tableau-bases" class="section">
+            <h2>Tableau de Conversion Multi-Bases</h2>
+            <div class="form-group">
+              <label for="nombre-tableau">Nombre :</label>
+              <input type="text" id="nombre-tableau" value="255" />
+            </div>
+            <div class="form-group">
+              <label for="base-tableau">Base source (2-36) :</label>
+              <input
+                type="number"
+                id="base-tableau"
+                value="10"
+                min="2"
+                max="36"
+              />
+            </div>
+            <button id="btn-tableau-bases">Générer le Tableau</button>
+            <div id="tableau-bases-result"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pied de page avec signature -->
+      <div class="footer">
+        <div class="developer">
+          Codé par <a href="mailto:promaildzaier@gmail.com">LG_GHAZEL</a>
+        </div>
+        <div class="copyright">
+          &copy; 2024 Convertisseur Numérique Universel - Tous droits réservés
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ==================== FONCTIONS DE NAVIGATION ====================
+      function showSection(sectionId) {
+        document.querySelectorAll(".section").forEach((section) => {
+          section.classList.remove("active");
+        });
+
+        document.querySelectorAll(".nav-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        document.getElementById(sectionId).classList.add("active");
+
+        const activeBtn = document.querySelector(
+          `[data-section="${sectionId}"]`
+        );
+        if (activeBtn) {
+          activeBtn.classList.add("active");
+        }
+      }
+
+      // Initialisation de la navigation
+      document.querySelectorAll(".nav-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const sectionId = this.getAttribute("data-section");
+          showSection(sectionId);
+        });
+      });
+
+      // ==================== FONCTIONS DE BASE ====================
+      function charToValue(c) {
+        if (c >= "0" && c <= "9") return parseInt(c);
+        if (c >= "A" && c <= "Z")
+          return c.charCodeAt(0) - "A".charCodeAt(0) + 10;
+        if (c >= "a" && c <= "z")
+          return c.charCodeAt(0) - "a".charCodeAt(0) + 10;
+        return -1;
+      }
+
+      function valueToChar(value) {
+        if (value >= 0 && value <= 9) return String(value);
+        if (value >= 10 && value <= 35)
+          return String.fromCharCode("A".charCodeAt(0) + (value - 10));
+        return "?";
+      }
+
+      function validerNombreBase(nombre, base) {
+        for (let i = 0; i < nombre.length; i++) {
+          const valeur = charToValue(nombre[i]);
+          if (valeur === -1 || valeur >= base) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function decimalVersBinaire(n, bits) {
+        if (n === 0)
+          return {
+            resultat: "0".repeat(bits),
+            etapes: `Conversion de 0 en binaire: ${"0".repeat(bits)}`,
+          };
+
+        let binaire = "";
+        let temp = Math.abs(n);
+        let etapes = `Conversion de ${n} en binaire:\n`;
+
+        while (temp > 0 && binaire.length < bits) {
+          const reste = temp % 2;
+          const quotient = Math.floor(temp / 2);
+          etapes += `${temp} ÷ 2 = ${quotient}, reste ${reste}\n`;
+          binaire = reste + binaire;
+          temp = quotient;
+        }
+
+        while (binaire.length < bits) {
+          binaire = "0" + binaire;
+          etapes += `Ajout du bit 0 pour compléter à ${bits} bits\n`;
+        }
+
+        return { resultat: binaire, etapes: etapes };
+      }
+
+      // ==================== CONVERSIONS ENTIÈRES ====================
+      function convertirSVA(n, bits) {
+        const valeurAbsolue = Math.abs(n);
+        const binaireResult = decimalVersBinaire(valeurAbsolue, bits - 1);
+        const bitSigne = n < 0 ? "1" : "0";
+
+        const etapes =
+          `SVA (Signe-Valeur Absolue) pour ${n}:\n` +
+          `1. Bit de signe: ${bitSigne} (${n < 0 ? "négatif" : "positif"})\n` +
+          `2. Valeur absolue: ${valeurAbsolue}\n` +
+          `3. Conversion en binaire:\n${binaireResult.etapes}`;
+
+        return {
+          resultat: bitSigne + " " + binaireResult.resultat,
+          etapes: etapes,
+        };
+      }
+
+      function convertirComplement1(n, bits) {
+        if (n >= 0) {
+          const binaireResult = decimalVersBinaire(n, bits);
+          return {
+            resultat: binaireResult.resultat,
+            etapes:
+              `Complément à 1 pour ${n} (positif):\n` +
+              `Nombre positif → représentation normale\n${binaireResult.etapes}`,
+          };
+        } else {
+          const valeurAbsolue = Math.abs(n);
+          const binaireResult = decimalVersBinaire(valeurAbsolue, bits);
+          let c1 = "";
+          let inversionEtapes = "Inversion bit à bit:\n";
+
+          for (let i = 0; i < binaireResult.resultat.length; i++) {
+            const bitInverse = binaireResult.resultat[i] === "0" ? "1" : "0";
+            c1 += bitInverse;
+            inversionEtapes += `  ${binaireResult.resultat[i]} → ${bitInverse}\n`;
+          }
+
+          return {
+            resultat: c1,
+            etapes:
+              `Complément à 1 pour ${n} (négatif):\n` +
+              `1. Valeur absolue: ${valeurAbsolue}\n` +
+              `2. Conversion en binaire:\n${binaireResult.etapes}` +
+              `3. ${inversionEtapes}`,
+          };
+        }
+      }
+
+      function convertirComplement2(n, bits) {
+        if (n >= 0) {
+          const binaireResult = decimalVersBinaire(n, bits);
+          return {
+            resultat: binaireResult.resultat,
+            etapes:
+              `Complément à 2 pour ${n} (positif):\n` +
+              `Nombre positif → représentation normale\n${binaireResult.etapes}`,
+          };
+        } else {
+          const valeurAbsolue = Math.abs(n);
+          const binaireResult = decimalVersBinaire(valeurAbsolue, bits);
+          let c1 = "";
+          let etapes =
+            `Complément à 2 pour ${n} (négatif):\n` +
+            `1. Valeur absolue: ${valeurAbsolue}\n` +
+            `2. Conversion en binaire:\n${binaireResult.etapes}`;
+
+          // Étape 1: Complément à 1
+          for (let i = 0; i < binaireResult.resultat.length; i++) {
+            c1 += binaireResult.resultat[i] === "0" ? "1" : "0";
+          }
+          etapes += `3. Complément à 1 (inversion): ${c1}\n`;
+
+          // Étape 2: Ajouter 1
+          let c2 = "";
+          let retenue = 1;
+          let additionEtapes = "4. Ajout de 1:\n";
+
+          for (let i = c1.length - 1; i >= 0; i--) {
+            const bit = parseInt(c1[i]) + retenue;
+            c2 = (bit % 2) + c2;
+            retenue = Math.floor(bit / 2);
+            additionEtapes += `   Position ${i}: ${c1[i]} + ${
+              retenue > 0 && i === c1.length - 1 ? 1 : 0
+            } = ${bit} → bit = ${bit % 2}, retenue = ${Math.floor(bit / 2)}\n`;
+          }
+
+          etapes += additionEtapes;
+
+          return {
+            resultat: c2,
+            etapes: etapes,
+          };
+        }
+      }
+
+      function decimalVersBCD(n) {
+        if (n === 0) return { resultat: "0000", etapes: "BCD pour 0: 0000" };
+
+        const chiffres = Math.abs(n).toString().split("");
+        let bcd = "";
+        let etapes = `BCD pour ${n}:\n`;
+
+        for (let chiffre of chiffres) {
+          const valeur = parseInt(chiffre);
+          const binaire = valeur.toString(2).padStart(4, "0");
+          bcd += binaire + " ";
+          etapes += `  Chiffre ${chiffre} → ${valeur
+            .toString(2)
+            .padStart(4, "0")}\n`;
+        }
+
+        return {
+          resultat: bcd.trim(),
+          etapes: etapes,
+        };
+      }
+
+      function decimalVersExcess3(n) {
+        if (n === 0)
+          return {
+            resultat: "0011",
+            etapes: "Excess-3 pour 0: 0011 (0 + 3 = 3)",
+          };
+
+        const chiffres = Math.abs(n).toString().split("");
+        let excess3 = "";
+        let etapes = `Excess-3 pour ${n}:\n`;
+
+        for (let chiffre of chiffres) {
+          const valeur = parseInt(chiffre);
+          const exc3 = valeur + 3;
+          const binaire = exc3.toString(2).padStart(4, "0");
+          excess3 += binaire + " ";
+          etapes += `  Chiffre ${chiffre} + 3 = ${exc3} → ${binaire}\n`;
+        }
+
+        return {
+          resultat: excess3.trim(),
+          etapes: etapes,
+        };
+      }
+
+      function binaireVersGray(binaire) {
+        let gray = binaire[0];
+        let etapes =
+          `Conversion Gray pour ${binaire}:\n` +
+          `Bit 0: ${binaire[0]} → ${gray}\n`;
+
+        for (let i = 1; i < binaire.length; i++) {
+          const bitGray = (
+            parseInt(binaire[i - 1]) ^ parseInt(binaire[i])
+          ).toString();
+          gray += bitGray;
+          etapes += `Bit ${i}: ${binaire[i - 1]} XOR ${
+            binaire[i]
+          } = ${bitGray} → ${gray}\n`;
+        }
+
+        return {
+          resultat: gray,
+          etapes: etapes,
+        };
+      }
+
+      // ==================== VIRGULE FIXE CORRIGÉE ====================
+      function convertirVirguleFixe(n, bitsEntier, bitsFraction) {
+        console.log("Conversion virgule fixe:", n, bitsEntier, bitsFraction);
+
+        if (isNaN(n)) {
+          return {
+            resultat: "Erreur",
+            etapes: "Erreur: Le nombre saisi n'est pas valide",
+          };
+        }
+
+        const signe = n < 0;
+        const valeurAbsolue = Math.abs(n);
+        const partieEntiere = Math.floor(valeurAbsolue);
+        let partieFraction = valeurAbsolue - partieEntiere;
+
+        let etapes =
+          `CONVERSION VIRGULE FIXE pour ${n}\n` +
+          `Format: ${bitsEntier} bits entier + ${bitsFraction} bits fraction\n` +
+          `Signe: ${signe ? "négatif (1)" : "positif (0)"}\n\n`;
+
+        // Conversion partie entière
+        const entierResult = decimalVersBinaire(partieEntiere, bitsEntier);
+        etapes += `1. PARTIE ENTIÈRE (${partieEntiere}):\n${entierResult.etapes}\n`;
+
+        // Conversion partie fractionnaire
+        let fractionBin = "";
+        etapes +=
+          `2. PARTIE FRACTIONNAIRE (${partieFraction.toFixed(10)}):\n` +
+          `Méthode: Multiplication successive par 2\n`;
+
+        let tempFraction = partieFraction;
+        for (let i = 0; i < bitsFraction; i++) {
+          const avantMultiplication = tempFraction;
+          tempFraction *= 2;
+          const bit = Math.floor(tempFraction);
+          fractionBin += bit;
+
+          etapes +=
+            `   Étape ${i + 1}: ${avantMultiplication.toFixed(
+              10
+            )} × 2 = ${tempFraction.toFixed(10)}\n` +
+            `   → Partie entière = ${bit}, reste = ${(
+              tempFraction - bit
+            ).toFixed(10)}\n`;
+
+          tempFraction -= bit;
+
+          if (tempFraction === 0) {
+            etapes += `   → La partie fractionnaire est terminée (reste = 0)\n`;
+            // Remplir avec des zéros
+            while (fractionBin.length < bitsFraction) {
+              fractionBin += "0";
+            }
+            break;
+          }
+        }
+
+        // S'assurer que la fraction a la bonne longueur
+        while (fractionBin.length < bitsFraction) {
+          fractionBin += "0";
+        }
+
+        const bitSigne = signe ? "1" : "0";
+        const resultatComplet = `${bitSigne} ${entierResult.resultat}.${fractionBin}`;
+
+        etapes +=
+          `\n3. RÉSULTAT FINAL:\n` +
+          `   Signe: ${bitSigne}\n` +
+          `   Partie entière: ${entierResult.resultat}\n` +
+          `   Partie fractionnaire: ${fractionBin}\n` +
+          `   Représentation: ${resultatComplet}`;
+
+        return {
+          resultat: resultatComplet,
+          etapes: etapes,
+        };
+      }
+
+      // ==================== VIRGULE FLOTTANTE ====================
+      function floatToIEEE754(n) {
+        const buffer = new ArrayBuffer(4);
+        const view = new DataView(buffer);
+        view.setFloat32(0, n, false);
+
+        let bits = "";
+        for (let i = 3; i >= 0; i--) {
+          const byte = view.getUint8(i);
+          bits += byte.toString(2).padStart(8, "0");
+        }
+
+        const signe = bits[0];
+        const exposant = bits.substring(1, 9);
+        const mantisse = bits.substring(9);
+        const exposantDecimal = parseInt(exposant, 2) - 127;
+
+        let etapes =
+          `CONVERSION IEEE 754 SIMPLE PRÉCISION pour ${n}\n` +
+          `1. REPRÉSENTATION MACHINE (32 bits):\n` +
+          `   ${bits.substring(0, 1)} ${bits.substring(1, 9)} ${bits.substring(
+            9
+          )}\n` +
+          `   |   |--------| |-----------------------|\n` +
+          `   |    Exposant         Mantisse\n` +
+          `  Signe    (8 bits)        (23 bits)\n\n` +
+          `2. DÉCOMPOSITION:\n` +
+          `   - Signe: ${signe} (${signe === "1" ? "négatif" : "positif"})\n` +
+          `   - Exposant: ${exposant} (décalé: ${exposantDecimal})\n` +
+          `   - Mantisse: ${mantisse}\n\n` +
+          `3. REPRÉSENTATION SCIENTIFIQUE:\n` +
+          `   (-1)^${signe} × 1.${mantisse} × 2^${exposantDecimal}`;
+
+        return {
+          signe: signe,
+          exposant: exposant,
+          mantisse: mantisse,
+          exposantDecimal: exposantDecimal,
+          representation: `${signe} ${exposant} ${mantisse}`,
+          etapes: etapes,
+        };
+      }
+
+      function doubleToIEEE754(n) {
+        const buffer = new ArrayBuffer(8);
+        const view = new DataView(buffer);
+        view.setFloat64(0, n, false);
+
+        let bits = "";
+        for (let i = 7; i >= 0; i--) {
+          const byte = view.getUint8(i);
+          bits += byte.toString(2).padStart(8, "0");
+        }
+
+        const signe = bits[0];
+        const exposant = bits.substring(1, 12);
+        const mantisse = bits.substring(12);
+        const exposantDecimal = parseInt(exposant, 2) - 1023;
+
+        let etapes =
+          `CONVERSION IEEE 754 DOUBLE PRÉCISION pour ${n}\n` +
+          `1. REPRÉSENTATION MACHINE (64 bits):\n` +
+          `   ${bits.substring(0, 1)} ${bits.substring(1, 12)} ${bits.substring(
+            12
+          )}\n` +
+          `   |   |-----------| |----------------------------------------------------|\n` +
+          `   |      Exposant                          Mantisse\n` +
+          `  Signe    (11 bits)                        (52 bits)\n\n` +
+          `2. DÉCOMPOSITION:\n` +
+          `   - Signe: ${signe} (${signe === "1" ? "négatif" : "positif"})\n` +
+          `   - Exposant: ${exposant} (décalé: ${exposantDecimal})\n` +
+          `   - Mantisse: ${mantisse}\n\n` +
+          `3. REPRÉSENTATION SCIENTIFIQUE:\n` +
+          `   (-1)^${signe} × 1.${mantisse} × 2^${exposantDecimal}`;
+
+        return {
+          signe: signe,
+          exposant: exposant,
+          mantisse: mantisse,
+          exposantDecimal: exposantDecimal,
+          representation: `${signe} ${exposant} ${mantisse}`,
+          etapes: etapes,
+        };
+      }
+
+      // ==================== CONVERSION DE BASE ====================
+      function baseToDecimalDetail(nombre, base) {
+        let resultat = 0;
+        let etapes =
+          `CONVERSION BASE ${base} → DÉCIMAL\n` +
+          `Nombre: (${nombre}) en base ${base}\n\n` +
+          `1. FORME POLYNOMIALE:\n` +
+          `   P(x) = `;
+
+        let calculDetaille = `\n2. CALCUL DÉTAILLÉ:\n`;
+
+        for (let i = 0; i < nombre.length; i++) {
+          const valeur = charToValue(nombre[i]);
+          const puissance = nombre.length - 1 - i;
+          const terme = valeur * Math.pow(base, puissance);
+
+          etapes += `${valeur}×${base}^${puissance}`;
+          if (i < nombre.length - 1) etapes += " + ";
+
+          calculDetaille += `   ${
+            nombre[i]
+          } × ${base}^${puissance} = ${valeur} × ${Math.pow(
+            base,
+            puissance
+          )} = ${terme}\n`;
+
+          resultat += terme;
+        }
+
+        etapes += `\n\n3. SOMME: ${resultat}`;
+
+        return {
+          valeur: resultat,
+          etapes: etapes + calculDetaille,
+        };
+      }
+
+      function decimalToBaseDetail(decimal, base) {
+        if (decimal === 0)
+          return {
+            valeur: "0",
+            etapes: `CONVERSION DÉCIMAL → BASE ${base}\n0 ÷ ${base} = 0, reste 0\n\nRésultat: 0`,
+          };
+
+        let n = decimal;
+        let restes = [];
+        let etapes =
+          `CONVERSION DÉCIMAL → BASE ${base}\n` +
+          `Nombre: ${decimal}\n\n` +
+          `1. DIVISION SUCCESSIVE:\n`;
+
+        while (n > 0) {
+          const reste = n % base;
+          const quotient = Math.floor(n / base);
+          const caractere = valueToChar(reste);
+
+          etapes += `   ${n} ÷ ${base} = ${quotient}, reste ${reste} → '${caractere}'\n`;
+
+          restes.push(caractere);
+          n = quotient;
+        }
+
+        const resultat = restes.reverse().join("");
+
+        etapes += `\n2. LECTURE DES RESTES (de bas en haut): ${resultat}`;
+
+        return {
+          valeur: resultat,
+          etapes: etapes,
+        };
+      }
+
+      // ==================== BASE COMMUNE CORRIGÉE ====================
+      function trouverBaseCommune() {
+        const nombre1 = document
+          .getElementById("nombre1-base")
+          .value.toUpperCase();
+        const nombre2 = document
+          .getElementById("nombre2-base")
+          .value.toUpperCase();
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>🔍 Recherche de Base Inconnue</h3>`;
+        resultatHTML += `<p>On cherche la base X où <strong>(${nombre2})<sub>X</sub> = (${nombre1})<sub>10</sub></strong></p>`;
+
+        // Convertir le premier nombre (décimal) en valeur numérique
+        const valeurCible = parseInt(nombre1);
+
+        if (isNaN(valeurCible)) {
+          resultatHTML +=
+            '<div class="error">Erreur: Le premier nombre doit être un nombre décimal valide</div>';
+          resultatHTML += "</div>";
+          document.getElementById("base-commune-result").innerHTML =
+            resultatHTML;
+          return;
+        }
+
+        resultatHTML += `<div class="steps">Valeur décimale cible: ${valeurCible}</div>`;
+
+        const basesTrouvees = [];
+        let etapesDetaillees = `<h4>📊 Détail des calculs:</h4>`;
+
+        // Trouver la base minimale possible
+        const chiffres = nombre2.split("").map((c) => charToValue(c));
+        const baseMin = Math.max(2, ...chiffres.map((v) => v + 1));
+
+        etapesDetaillees += `<div class="steps">Base minimale à tester: ${baseMin} (chiffre maximum: ${Math.max(
+          ...chiffres
+        )})</div>`;
+
+        for (let base = baseMin; base <= 36; base++) {
+          let valeurTest = 0;
+          let etapesConversion = `Base ${base}: `;
+
+          // Conversion avec affichage des étapes
+          for (let i = 0; i < nombre2.length; i++) {
+            const valeur = charToValue(nombre2[i]);
+            const puissance = nombre2.length - 1 - i;
+            const terme = valeur * Math.pow(base, puissance);
+            valeurTest += terme;
+
+            etapesConversion += `${valeur}×${base}^${puissance}`;
+            if (i < nombre2.length - 1) etapesConversion += " + ";
+          }
+
+          etapesConversion += ` = ${valeurTest}`;
+
+          const egalite = valeurTest === valeurCible;
+          const symbole = egalite ? "✅" : "❌";
+
+          etapesDetaillees += `<div class="steps">${etapesConversion} ${symbole}</div>`;
+
+          if (egalite) {
+            basesTrouvees.push({
+              base: base,
+              valeur: valeurTest,
+              etapes: etapesConversion,
+            });
+
+            // Arrêter la recherche si on a trouvé une solution
+            break;
+          }
+
+          // Si la valeur dépasse déjà la cible, arrêter la recherche
+          if (valeurTest > valeurCible) {
+            etapesDetaillees += `<div class="steps warning">La valeur dépasse la cible, arrêt de la recherche</div>`;
+            break;
+          }
+        }
+
+        if (basesTrouvees.length > 0) {
+          resultatHTML += '<div class="success"><h4>🎉 BASE TROUVÉE:</h4>';
+          for (let base of basesTrouvees) {
+            resultatHTML += `<div class="conversion-card">`;
+            resultatHTML += `<h4>Base ${base.base}</h4>`;
+            resultatHTML += `<p><strong>(${nombre2})<sub>${base.base}</sub> = (${nombre1})<sub>10</sub> = ${base.valeur}</strong></p>`;
+            resultatHTML += `<div class="steps">${base.etapes}</div>`;
+            resultatHTML += `</div>`;
+          }
+          resultatHTML += "</div>";
+        } else {
+          resultatHTML += '<div class="error"><h4>❌ AUCUNE BASE TROUVÉE</h4>';
+          resultatHTML += `<p>Aucune base entre ${baseMin} et 36 ne satisfait l'équation.</p>`;
+          resultatHTML += "</div>";
+        }
+
+        resultatHTML += etapesDetaillees;
+        resultatHTML += "</div>";
+
+        document.getElementById("base-commune-result").innerHTML = resultatHTML;
+      }
+
+      // ==================== FONCTIONS D'INTERFACE ====================
+      function convertirEntier() {
+        const n = parseInt(document.getElementById("entier-input").value);
+        const bits = parseInt(document.getElementById("bits-input").value);
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>Résultats pour ${n} (${bits} bits)</h3>`;
+
+        // SVA
+        const sva = convertirSVA(n, bits);
+        resultatHTML += `<div class="conversion-card">
+                    <h4>🔢 SVA (Signe-Valeur Absolue)</h4>
+                    <div class="binary-display">${sva.resultat}</div>
+                    <div class="steps">${sva.etapes}</div>
+                </div>`;
+
+        // Complément à 1
+        const c1 = convertirComplement1(n, bits);
+        resultatHTML += `<div class="conversion-card">
+                    <h4>🔄 Complément à 1</h4>
+                    <div class="binary-display">${c1.resultat}</div>
+                    <div class="steps">${c1.etapes}</div>
+                </div>`;
+
+        // Complément à 2
+        const c2 = convertirComplement2(n, bits);
+        resultatHTML += `<div class="conversion-card">
+                    <h4>🔁 Complément à 2</h4>
+                    <div class="binary-display">${c2.resultat}</div>
+                    <div class="steps">${c2.etapes}</div>
+                </div>`;
+
+        // Binaire naturel
+        const binaire = decimalVersBinaire(Math.abs(n), bits);
+        resultatHTML += `<div class="conversion-card">
+                    <h4>⚡ Binaire Naturel</h4>
+                    <div class="binary-display">${binaire.resultat}</div>
+                    <div class="steps">${binaire.etapes}</div>
+                </div>`;
+
+        // Code Gray
+        const gray = binaireVersGray(binaire.resultat);
+        resultatHTML += `<div class="conversion-card">
+                    <h4>🎯 Code Gray</h4>
+                    <div class="binary-display">${gray.resultat}</div>
+                    <div class="steps">${gray.etapes}</div>
+                </div>`;
+
+        // BCD
+        const bcd = decimalVersBCD(n);
+        resultatHTML += `<div class="conversion-card">
+                    <h4>🔢 BCD</h4>
+                    <div class="binary-display">${bcd.resultat}</div>
+                    <div class="steps">${bcd.etapes}</div>
+                </div>`;
+
+        // Excess-3
+        const excess3 = decimalVersExcess3(n);
+        resultatHTML += `<div class="conversion-card">
+                    <h4>📈 Excess-3</h4>
+                    <div class="binary-display">${excess3.resultat}</div>
+                    <div class="steps">${excess3.etapes}</div>
+                </div>`;
+
+        resultatHTML += "</div>";
+        document.getElementById("entier-result").innerHTML = resultatHTML;
+      }
+
+      function convertirVirguleFixeInterface() {
+        const n = parseFloat(document.getElementById("reel-input").value);
+        const bitsEntier = parseInt(
+          document.getElementById("bits-entier").value
+        );
+        const bitsFraction = parseInt(
+          document.getElementById("bits-fraction").value
+        );
+
+        console.log("Données reçues:", n, bitsEntier, bitsFraction);
+
+        if (isNaN(n) || isNaN(bitsEntier) || isNaN(bitsFraction)) {
+          document.getElementById("virgule-fixe-result").innerHTML =
+            '<div class="error">Erreur: Veuillez entrer des valeurs valides</div>';
+          return;
+        }
+
+        const resultat = convertirVirguleFixe(n, bitsEntier, bitsFraction);
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>Résultat Virgule Fixe</h3>`;
+        resultatHTML += `<p>Format: ${bitsEntier} bits entier + ${bitsFraction} bits fraction</p>`;
+        resultatHTML += `<div class="binary-display">${resultat.resultat}</div>`;
+        resultatHTML += `<div class="steps">${resultat.etapes}</div>`;
+        resultatHTML += "</div>";
+
+        document.getElementById("virgule-fixe-result").innerHTML = resultatHTML;
+      }
+
+      function convertirVirguleFlottante() {
+        const n = parseFloat(document.getElementById("float-input").value);
+        const precision = document.querySelector(
+          'input[name="precision"]:checked'
+        ).value;
+
+        let resultat;
+        if (precision === "double") {
+          resultat = doubleToIEEE754(n);
+        } else {
+          resultat = floatToIEEE754(n);
+        }
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>Résultat Virgule Flottante IEEE 754 ${
+          precision === "double" ? "(Double Précision)" : "(Simple Précision)"
+        }</h3>`;
+        resultatHTML += `<div class="binary-display">${resultat.representation}</div>`;
+        resultatHTML += `<div class="steps">${resultat.etapes}</div>`;
+        resultatHTML += "</div>";
+
+        document.getElementById("virgule-flottante-result").innerHTML =
+          resultatHTML;
+      }
+
+      function convertirBase() {
+        const nombre = document
+          .getElementById("nombre-base")
+          .value.toUpperCase();
+        const baseSource = parseInt(
+          document.getElementById("base-source").value
+        );
+        const baseCible = parseInt(document.getElementById("base-cible").value);
+
+        if (!validerNombreBase(nombre, baseSource)) {
+          document.getElementById("conversion-base-result").innerHTML =
+            '<div class="error">Erreur: Le nombre contient des caractères invalides pour la base source</div>';
+          return;
+        }
+
+        const conversionDecimal = baseToDecimalDetail(nombre, baseSource);
+        const conversionBase = decimalToBaseDetail(
+          conversionDecimal.valeur,
+          baseCible
+        );
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>Résultat de Conversion</h3>`;
+        resultatHTML += `<p><strong>${nombre}</strong> en base ${baseSource} = <strong>${conversionBase.valeur}</strong> en base ${baseCible}</p>`;
+        resultatHTML += `<p>Valeur décimale: ${conversionDecimal.valeur}</p>`;
+        resultatHTML += `<div class="steps">${conversionDecimal.etapes}</div>`;
+        resultatHTML += `<div class="steps">${conversionBase.etapes}</div>`;
+        resultatHTML += "</div>";
+
+        document.getElementById("conversion-base-result").innerHTML =
+          resultatHTML;
+      }
+
+      function genererTableau() {
+        const nombre = document
+          .getElementById("nombre-tableau")
+          .value.toUpperCase();
+        const baseSource = parseInt(
+          document.getElementById("base-tableau").value
+        );
+
+        if (!validerNombreBase(nombre, baseSource)) {
+          document.getElementById("tableau-bases-result").innerHTML =
+            '<div class="error">Erreur: Le nombre contient des caractères invalides pour la base source</div>';
+          return;
+        }
+
+        const valeurDecimale = baseToDecimalDetail(nombre, baseSource).valeur;
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>Tableau de Conversion Multi-Bases</h3>`;
+        resultatHTML += `<p>Nombre: <strong>${nombre}</strong> en base ${baseSource} (décimal: ${valeurDecimale})</p>`;
+
+        resultatHTML += '<div class="scroll-container">';
+        resultatHTML += '<table class="table">';
+        resultatHTML +=
+          "<tr><th>Base</th><th>Représentation</th><th>Valeur Décimale</th></tr>";
+
+        for (let base = 2; base <= 16; base++) {
+          const representation = decimalToBaseDetail(
+            valeurDecimale,
+            base
+          ).valeur;
+          resultatHTML += `<tr>
+                        <td>${base}</td>
+                        <td><strong>${representation}</strong><sub>${base}</sub></td>
+                        <td>${valeurDecimale}</td>
+                    </tr>`;
+        }
+
+        resultatHTML += "</table>";
+        resultatHTML += "</div>";
+        resultatHTML += "</div>";
+
+        document.getElementById("tableau-bases-result").innerHTML =
+          resultatHTML;
+      }
+
+      // ==================== FONCTIONS DE DONATION ====================
+      function showDonationInfo() {
+        const overlay = document.createElement("div");
+        overlay.className = "alert-overlay";
+
+        const alertBox = document.createElement("div");
+        alertBox.className = "alert-box";
+        alertBox.innerHTML = `
+                <div class="alert-title">💝 Soutenez ce projet</div>
+                <p style="color: #cbd5e1; margin-bottom: 20px;">Votre soutien aide à maintenir et améliorer cette application</p>
+                
+                <div class="account-info">
+                    <div class="account-label">Compte CCP:</div>
+                    <div class="account-number">004 393 611 0</div>
+                    
+                    <div class="account-label">Clé:</div>
+                    <div class="account-number">32</div>
+                </div>
+                
+                <p style="color: #cbd5e1; font-size: 0.9em; margin-top: 15px;">
+                    Merci pour votre générosité ! 🙏
+                </p>
+                
+                <button class="alert-close-btn" onclick="closeDonationAlert()">
+                    Fermer
+                </button>
+            `;
+
+        overlay.appendChild(alertBox);
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener("click", function (e) {
+          if (e.target === overlay) {
+            closeDonationAlert();
+          }
+        });
+      }
+
+      function closeDonationAlert() {
+        const overlay = document.querySelector(".alert-overlay");
+        if (overlay) {
+          overlay.remove();
+        }
+      }
+
+      // ==================== GESTION DE LA PRÉCISION ====================
+      document.querySelectorAll(".precision-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          // Retirer la classe active de tous les boutons
+          document.querySelectorAll(".precision-btn").forEach((b) => {
+            b.classList.remove("active");
+          });
+
+          // Ajouter la classe active au bouton cliqué
+          this.classList.add("active");
+
+          // Mettre à jour les champs avec les valeurs du bouton
+          const bitsEntier = this.getAttribute("data-bits-entier");
+          const bitsFraction = this.getAttribute("data-bits-fraction");
+
+          document.getElementById("bits-entier").value = bitsEntier;
+          document.getElementById("bits-fraction").value = bitsFraction;
+        });
+      });
+
+      // Gestion des radio buttons pour la virgule flottante
+      document.querySelectorAll(".radio-input").forEach((radio) => {
+        radio.addEventListener("change", function () {
+          document.querySelectorAll(".radio-label").forEach((label) => {
+            label.classList.remove("active");
+          });
+          this.closest(".radio-label").classList.add("active");
+        });
+      });
+
+      // ==================== ÉCOUTEURS D'ÉVÉNEMENTS ====================
+      document
+        .getElementById("btn-entier")
+        .addEventListener("click", convertirEntier);
+      document
+        .getElementById("btn-virgule-fixe")
+        .addEventListener("click", convertirVirguleFixeInterface);
+      document
+        .getElementById("btn-virgule-flottante")
+        .addEventListener("click", convertirVirguleFlottante);
+      document
+        .getElementById("btn-conversion-base")
+        .addEventListener("click", convertirBase);
+      document
+        .getElementById("btn-base-commune")
+        .addEventListener("click", trouverBaseCommune);
+      document
+        .getElementById("btn-tableau-bases")
+        .addEventListener("click", genererTableau);
+
+      // Fermer avec la touche Echap
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeDonationAlert();
+        }
+      });
+
+      // ==================== INITIALISATION ====================
+      document.addEventListener("DOMContentLoaded", function () {
+        convertirEntier(); // Afficher un exemple au chargement
+      });
+    </script>
+  </body>
+</html>
