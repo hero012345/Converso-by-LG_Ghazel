@@ -1602,28 +1602,28 @@
         const alertBox = document.createElement("div");
         alertBox.className = "alert-box";
         alertBox.innerHTML = `
-                <div class="alert-title">💝 Soutenez ce projet</div>
-                <p style="color: #cbd5e1; margin-bottom: 20px;">Votre soutien aide à maintenir et améliorer cette application</p>
-                
-                <div class="account-info">
-    <div class="account-label">BaridiMob :</div>
-    <div class="account-number">00799999004393611035</div>
+    <div class="alert-title">💝 Soutenez ce projet</div>
+    <p style="color: #cbd5e1; margin-bottom: 20px;">Votre soutien aide à maintenir et améliorer cette application</p>
     
-    <div class="account-label">Compte CCP :</div>
-    <div class="account-number">004 393 611 0</div>
+    <div class="account-info">
+        <div class="account-label">📱 BaridiMob :</div>
+        <div class="account-number">00799999004393611035</div>
+        
+        <div class="account-label">🏦 Compte CCP :</div>
+        <div class="account-number">004 393 611 0</div>
+        
+        <div class="account-label">🔑 Clé :</div>
+        <div class="account-number">32</div>
+    </div>
     
-    <div class="account-label">Clé :</div>
-    <div class="account-number">32</div>
-</div>
-                
-                <p style="color: #cbd5e1; font-size: 0.9em; margin-top: 15px;">
-                    Merci pour votre générosité ! 🙏
-                </p>
-                
-                <button class="alert-close-btn" onclick="closeDonationAlert()">
-                    Fermer
-                </button>
-            `;
+    <p style="color: #cbd5e1; font-size: 0.9em; margin-top: 15px;">
+        Merci pour votre générosité ! 🙏
+    </p>
+    
+    <button class="alert-close-btn" onclick="closeDonationAlert()">
+        Fermer
+    </button>
+`;
 
         overlay.appendChild(alertBox);
         document.body.appendChild(overlay);
