@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://votrenom.github.io/converso-pro/sitemap.xml
