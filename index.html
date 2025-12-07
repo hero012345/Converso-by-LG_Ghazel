@@ -3,7 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Converso by LG_GHAZEL</title>
+    <title>Converso Pro by LG_GHAZEL</title>
+    <!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- ==================== AJOUTEZ ICI LES BALISES SEO ==================== -->
+    <title>Converso Pro - Convertisseur Numérique Avancé | Conversion Bases 2-36 | LG_GHAZEL</title>
+    <meta name="description" content="Converso Pro : Convertisseur numérique complet et gratuit. Convertir nombres entre bases 2-36, virgule flottante IEEE 754, opérations arithmétiques. Support SVA, complément à 1/2, BCD, code Gray, Excess-3.">
+    <meta name="keywords" content="converso, converso pro, convertisseur numérique, conversion binaire, hexadécimal, octal, décimal, virgule flottante, IEEE 754, complément à 1, complément à 2, SVA, BCD, code Gray, excess-3, calculatrice scientifique">
+    <meta name="author" content="LG_GHAZEL">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Converso Pro - Convertisseur Numérique Avancé Gratuit">
+    <meta property="og:description" content="Outil complet de conversion numérique : bases 2-36, virgule fixe, IEEE 754, opérations arithmétiques. Entièrement gratuit.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://votrenom.github.io/converso-pro/">
+    <!-- Remplacez l'URL par votre vraie URL GitHub Pages -->
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Converso Pro - Convertisseur Numérique">
+    <meta name="twitter:description" content="Convertissez nombres entre toutes les bases (2-36), virgule fixe, IEEE 754, opérations arithmétiques. Gratuit.">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://hero012345github.io/converso-pro/">
+    <!-- Remplacez l'URL par votre vraie URL GitHub Pages -->
+    
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Converso Pro",
+      "url": "https://votrenom.github.io/converso-pro/",
+      "description": "Outil avancé de conversion numérique supportant toutes les bases (2-36), virgule fixe, IEEE 754 et opérations arithmétiques",
+      "applicationCategory": "EducationalApplication",
+      "author": {
+        "@type": "Person",
+        "name": "LG_GHAZEL"
+      }
+    }
+    </script>
+    <!-- ==================== FIN DES BALISES SEO ==================== -->
+    
     <style>
       * {
         margin: 0;
@@ -88,19 +134,46 @@
         color: #e2e8f0;
         font-weight: 500;
         white-space: nowrap;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
         min-width: max-content;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav-btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(56, 189, 248, 0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+
+      .nav-btn:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .nav-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(56, 189, 248, 0.2);
+        border-color: #38bdf8;
       }
 
       .nav-btn.active {
         background: linear-gradient(135deg, #38bdf8, #0ea5e9);
         color: #0f172a;
         border-color: #38bdf8;
-        box-shadow: 0 2px 10px rgba(56, 189, 248, 0.3);
+        box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+        transform: translateY(-1px);
       }
 
       .nav-btn:active {
-        transform: scale(0.98);
+        transform: scale(0.95);
       }
 
       .content {
@@ -120,9 +193,11 @@
       @keyframes fadeIn {
         from {
           opacity: 0;
+          transform: translateY(10px);
         }
         to {
           opacity: 1;
+          transform: translateY(0);
         }
       }
 
@@ -140,7 +215,8 @@
 
       input,
       select,
-      button {
+      button,
+      textarea {
         width: 100%;
         padding: 14px 16px;
         border: 1px solid rgba(100, 116, 139, 0.4);
@@ -149,15 +225,17 @@
         background: rgba(30, 41, 59, 0.8);
         color: #f1f5f9;
         font-family: inherit;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
         -webkit-appearance: none;
       }
 
       input:focus,
-      select:focus {
+      select:focus,
+      textarea:focus {
         outline: none;
         border-color: #38bdf8;
-        box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.1);
+        box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+        transform: translateY(-1px);
       }
 
       button {
@@ -168,6 +246,32 @@
         font-weight: 600;
         font-size: 16px;
         margin-top: 10px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      button::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+
+      button:hover::after {
+        width: 300px;
+        height: 300px;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3);
       }
 
       button:active {
@@ -188,15 +292,42 @@
         border-radius: 8px;
         color: #e2e8f0;
         cursor: pointer;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
         text-align: center;
         font-size: 14px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .precision-btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(56, 189, 248, 0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+
+      .precision-btn:hover::before {
+        width: 200px;
+        height: 200px;
+      }
+
+      .precision-btn:hover {
+        transform: translateY(-2px);
+        border-color: #38bdf8;
+        box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
       }
 
       .precision-btn.active {
         background: linear-gradient(135deg, #38bdf8, #0ea5e9);
         color: #0f172a;
         border-color: #38bdf8;
+        box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
       }
 
       .radio-group {
@@ -215,16 +346,39 @@
         border: 1px solid rgba(100, 116, 139, 0.3);
         border-radius: 8px;
         cursor: pointer;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .radio-label::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(56, 189, 248, 0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+
+      .radio-label:hover::before {
+        width: 200px;
+        height: 200px;
       }
 
       .radio-label:hover {
         background: rgba(51, 65, 85, 0.6);
+        transform: translateX(5px);
+        border-color: #38bdf8;
       }
 
       .radio-label.active {
-        background: rgba(56, 189, 248, 0.1);
+        background: rgba(56, 189, 248, 0.15);
         border-color: #38bdf8;
+        box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.1);
       }
 
       .radio-input {
@@ -238,6 +392,18 @@
         padding: 20px;
         margin-top: 20px;
         border: 1px solid rgba(100, 116, 139, 0.3);
+        animation: slideUp 0.4s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .result-box h3 {
@@ -260,6 +426,7 @@
         line-height: 1.4;
         overflow-x: auto;
         word-break: break-word;
+        animation: fadeIn 0.5s ease;
       }
 
       .binary-display {
@@ -276,6 +443,19 @@
         line-height: 1.4;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        animation: pulse 1s ease;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(56, 189, 248, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+        }
       }
 
       .table {
@@ -326,7 +506,25 @@
         border: 1px solid rgba(100, 116, 139, 0.3);
         border-radius: 12px;
         padding: 18px;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
+        animation: slideIn 0.5s ease;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .conversion-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        border-color: #38bdf8;
       }
 
       .conversion-card:active {
@@ -360,6 +558,12 @@
         color: #38bdf8;
         text-decoration: none;
         font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .developer a:hover {
+        color: #7dd3fc;
+        text-decoration: underline;
       }
 
       .copyright {
@@ -383,6 +587,31 @@
         font-size: 15px;
         width: 100%;
         margin: 10px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .donation-btn::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+
+      .donation-btn:hover::after {
+        width: 300px;
+        height: 300px;
+      }
+
+      .donation-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(52, 211, 153, 0.3);
       }
 
       .alert-overlay {
@@ -397,6 +626,7 @@
         align-items: center;
         z-index: 1000;
         padding: 20px;
+        animation: fadeIn 0.3s ease;
       }
 
       .alert-box {
@@ -407,7 +637,19 @@
         text-align: center;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         width: 100%;
-        max-width: 400px;
+        max-width: 500px;
+        animation: popIn 0.4s ease;
+      }
+
+      @keyframes popIn {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
       }
 
       .alert-title {
@@ -451,6 +693,12 @@
         font-weight: 600;
         margin-top: 15px;
         width: 100%;
+        transition: all 0.3s ease;
+      }
+
+      .alert-close-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3);
       }
 
       .long-number {
@@ -466,11 +714,351 @@
         margin: 10px 0;
       }
 
+      .operation-inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .operation-input-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        align-items: end;
+      }
+
+      .number-input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .number-input-group label {
+        font-size: 0.9em;
+        margin-bottom: 0;
+      }
+
+      .number-input-group small {
+        color: #94a3b8;
+        font-size: 0.8em;
+      }
+
+      .remove-number-btn {
+        background: linear-gradient(135deg, #f87171, #dc2626);
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .remove-number-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(248, 113, 113, 0.3);
+      }
+
+      .add-number-btn {
+        background: linear-gradient(135deg, #34d399, #10b981);
+        color: #064e3b;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .add-number-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(52, 211, 153, 0.3);
+      }
+
+      .operation-selector {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin: 15px 0;
+      }
+
+      .operation-btn {
+        padding: 12px;
+        background: rgba(51, 65, 85, 0.6);
+        border: 1px solid rgba(100, 116, 139, 0.3);
+        border-radius: 8px;
+        color: #e2e8f0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 500;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .operation-btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(56, 189, 248, 0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+
+      .operation-btn:hover::before {
+        width: 200px;
+        height: 200px;
+      }
+
+      .operation-btn:hover {
+        transform: translateY(-2px);
+        border-color: #38bdf8;
+        box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+      }
+
+      .operation-btn.active {
+        background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        color: white;
+        border-color: #8b5cf6;
+        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        transform: translateY(-1px);
+      }
+
+      .update-list {
+        text-align: left;
+        margin: 20px 0;
+      }
+
+      .update-list ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .update-list li {
+        margin: 10px 0;
+        padding-left: 20px;
+        position: relative;
+        color: #cbd5e1;
+      }
+
+      .update-list li:before {
+        content: "✅";
+        position: absolute;
+        left: 0;
+      }
+
+      .update-list h4 {
+        color: #38bdf8;
+        margin: 15px 0 10px 0;
+      }
+
+      /* ==================== STYLES AMÉLIORÉS POUR LES CHECKBOXES ==================== */
+
+      /* Style pour les checkboxes de la section Conversions Série */
+      .conversion-check {
+        width: 22px;
+        height: 22px;
+        margin-right: 12px;
+        cursor: pointer;
+        position: relative;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border: 2px solid #64748b;
+        border-radius: 5px;
+        background: rgba(30, 41, 59, 0.9);
+        transition: all 0.3s ease;
+      }
+
+      .conversion-check:checked {
+        background: #38bdf8;
+        border-color: #38bdf8;
+      }
+
+      .conversion-check:checked::after {
+        content: "✓";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .conversion-check:hover {
+        border-color: #38bdf8;
+        box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+      }
+
+      .radio-label input[type="checkbox"]:checked + span {
+        color: #38bdf8;
+        font-weight: 600;
+      }
+
+      .radio-label input[type="checkbox"]:checked ~ span {
+        position: relative;
+        padding-left: 5px;
+      }
+
+      .radio-label input[type="checkbox"]:checked ~ span::before {
+        content: "✓ ";
+        color: #38bdf8;
+        font-weight: bold;
+        position: absolute;
+        left: -20px;
+      }
+
+      /* Style pour le checkbox "Afficher les étapes détaillées" dans la section Opérations */
+      #show-steps {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        position: relative;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border: 2px solid #64748b;
+        border-radius: 4px;
+        background: rgba(30, 41, 59, 0.9);
+        transition: all 0.3s ease;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+
+      #show-steps:checked {
+        background: #38bdf8;
+        border-color: #38bdf8;
+      }
+
+      #show-steps:checked::after {
+        content: "✓";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      #show-steps:hover {
+        border-color: #38bdf8;
+        box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+      }
+
+      /* Style pour le label du checkbox show-steps */
+      #show-steps + label {
+        display: inline;
+        color: #e2e8f0;
+        font-weight: 500;
+        cursor: pointer;
+        vertical-align: middle;
+      }
+
+      #show-steps:checked + label {
+        color: #38bdf8;
+        font-weight: 600;
+      }
+
+      #show-steps:checked + label::before {
+        content: "✓ ";
+        color: #38bdf8;
+        font-weight: bold;
+        margin-right: 3px;
+      }
+
+      /* Animations pour les checkboxes */
+      @keyframes checkPop {
+        0% {
+          transform: translate(-50%, -50%) scale(0.8);
+          opacity: 0;
+        }
+        70% {
+          transform: translate(-50%, -50%) scale(1.1);
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+      }
+
+      .conversion-check:checked::after {
+        animation: checkPop 0.3s ease;
+      }
+
+      #show-steps:checked::after {
+        animation: checkPop 0.3s ease;
+      }
+
+      #conversions-checklist {
+        max-height: 300px;
+        overflow-y: auto;
+        padding: 10px;
+      }
+
+      select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        background-size: 20px;
+        padding-right: 50px;
+        cursor: pointer;
+      }
+
+      select:hover {
+        border-color: #38bdf8;
+        background-color: rgba(30, 41, 59, 0.9);
+      }
+
+      select::-ms-expand {
+        display: none;
+      }
+
       @supports (-webkit-touch-callout: none) {
         input,
         select,
-        button {
+        button,
+        textarea {
           font-size: 16px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .operation-input-group {
+          grid-template-columns: 1fr;
+        }
+
+        .operation-selector {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .sidebar {
+          overflow-x: auto;
+          flex-wrap: nowrap;
+        }
+
+        .precision-buttons {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .operation-selector {
+          grid-template-columns: 1fr;
+        }
+
+        .precision-buttons {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -505,10 +1093,6 @@
         .steps {
           font-size: 12px;
           padding: 12px;
-        }
-
-        .precision-buttons {
-          grid-template-columns: 1fr;
         }
       }
 
@@ -558,13 +1142,125 @@
       .scrollable::-webkit-scrollbar {
         display: none;
       }
+
+      .toggle-steps-btn {
+        background: rgba(51, 65, 85, 0.6);
+        border: 1px solid rgba(100, 116, 139, 0.3);
+        border-radius: 8px;
+        color: #cbd5e1;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 12px;
+        margin-top: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .toggle-steps-btn:hover {
+        background: rgba(56, 189, 248, 0.2);
+        border-color: #38bdf8;
+      }
+
+      .hidden-steps {
+        display: none;
+      }
+
+      .format-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 10px;
+        margin: 15px 0;
+      }
+
+      .format-btn {
+        padding: 10px;
+        background: rgba(51, 65, 85, 0.6);
+        border: 1px solid rgba(100, 116, 139, 0.3);
+        border-radius: 8px;
+        color: #e2e8f0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        font-size: 13px;
+      }
+
+      .format-btn:hover {
+        transform: translateY(-2px);
+        border-color: #38bdf8;
+        box-shadow: 0 4px 8px rgba(56, 189, 248, 0.2);
+      }
+
+      .format-btn.active {
+        background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        color: white;
+        border-color: #8b5cf6;
+        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        transform: translateY(-1px);
+      }
+
+      .conversion-step {
+        background: rgba(30, 41, 59, 0.8);
+        border-left: 3px solid #38bdf8;
+        padding: 10px 15px;
+        margin: 5px 0;
+        border-radius: 0 8px 8px 0;
+        font-size: 13px;
+        color: #cbd5e1;
+        animation: slideRight 0.3s ease;
+      }
+
+      @keyframes slideRight {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .step-number {
+        display: inline-block;
+        background: #38bdf8;
+        color: #0f172a;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        margin-right: 8px;
+      }
+
+      .conversion-option {
+        background: rgba(51, 65, 85, 0.4);
+        border: 1px solid rgba(100, 116, 139, 0.2);
+        border-radius: 8px;
+        padding: 10px;
+        margin: 5px 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .conversion-option:hover {
+        background: rgba(51, 65, 85, 0.6);
+        border-color: #38bdf8;
+        transform: translateX(5px);
+      }
+
+      .conversion-option.active {
+        background: rgba(56, 189, 248, 0.15);
+        border-color: #38bdf8;
+        box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.1);
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <header>
-        <h1 title="the V03">Converso</h1>
-        <div class="subtitle">Outils complets de conversion numérique</div>
+        <h1 title="Converso Pro V05">Converso Pro</h1>
+        <div class="subtitle">Outils avancés de conversion numérique</div>
 
         <!-- Bouton Don -->
         <div class="donation-container">
@@ -588,6 +1284,12 @@
           <button class="nav-btn" data-section="conversion-base">
             Conversion de Base
           </button>
+          <button class="nav-btn" data-section="operations">
+            Opérations Arithmétiques
+          </button>
+          <button class="nav-btn" data-section="conversions-serie">
+            Conversions Série
+          </button>
           <button class="nav-btn" data-section="base-commune">
             Base Commune
           </button>
@@ -597,16 +1299,65 @@
         </div>
 
         <div class="content">
-          <!-- Section Nombres Entiers -->
+          <!-- Section Nombres Entiers (AMÉLIORÉE) -->
           <div id="entiers" class="section active">
             <h2>Conversion de Nombres Entiers</h2>
             <div class="form-group">
-              <label for="entier-input">Nombre entier :</label>
-              <input type="number" id="entier-input" value="-13" />
+              <label for="entier-input">Nombre :</label>
+              <input
+                type="text"
+                id="entier-input"
+                value="-13"
+                placeholder="Ex: -13, -1A, -1011"
+              />
+              <small style="color: #94a3b8; font-size: 0.9em"
+                >Utilisez - pour les nombres négatifs</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="entier-base">Base source :</label>
+              <select id="entier-base">
+                <option value="2">Binaire (2)</option>
+                <option value="3">Base 3</option>
+                <option value="4">Base 4</option>
+                <option value="5">Base 5</option>
+                <option value="6">Base 6</option>
+                <option value="7">Base 7</option>
+                <option value="8">Octal (8)</option>
+                <option value="9">Base 9</option>
+                <option value="10" selected>Décimal (10)</option>
+                <option value="11">Base 11</option>
+                <option value="12">Base 12</option>
+                <option value="13">Base 13</option>
+                <option value="14">Base 14</option>
+                <option value="15">Base 15</option>
+                <option value="16">Hexadécimal (16)</option>
+                <option value="17">Base 17</option>
+                <option value="18">Base 18</option>
+                <option value="19">Base 19</option>
+                <option value="20">Base 20</option>
+                <option value="21">Base 21</option>
+                <option value="22">Base 22</option>
+                <option value="23">Base 23</option>
+                <option value="24">Base 24</option>
+                <option value="25">Base 25</option>
+                <option value="26">Base 26</option>
+                <option value="27">Base 27</option>
+                <option value="28">Base 28</option>
+                <option value="29">Base 29</option>
+                <option value="30">Base 30</option>
+                <option value="31">Base 31</option>
+                <option value="32">Base 32</option>
+                <option value="33">Base 33</option>
+                <option value="34">Base 34</option>
+                <option value="35">Base 35</option>
+                <option value="36">Base 36</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="bits-input">Nombre de bits :</label>
               <select id="bits-input">
+                <option value="4">4 bits</option>
                 <option value="8">8 bits</option>
                 <option value="16">16 bits</option>
                 <option value="32" selected>32 bits</option>
@@ -617,7 +1368,7 @@
             <div id="entier-result"></div>
           </div>
 
-          <!-- Section Virgule Fixe avec précision 16 bits -->
+          <!-- Section Virgule Fixe -->
           <div id="virgule-fixe" class="section">
             <h2>Conversion Virgule Fixe</h2>
             <div class="form-group">
@@ -683,7 +1434,7 @@
             <div id="virgule-fixe-result"></div>
           </div>
 
-          <!-- Section Virgule Flottante -->
+          <!-- Section Virgule Flottante (MISE À JOUR) -->
           <div id="virgule-flottante" class="section">
             <h2>Conversion Virgule Flottante IEEE 754</h2>
             <div class="form-group">
@@ -698,6 +1449,15 @@
             <div class="form-group">
               <label>Précision :</label>
               <div class="radio-group">
+                <label class="radio-label">
+                  <input
+                    type="radio"
+                    name="precision"
+                    value="half"
+                    class="radio-input"
+                  />
+                  Demi-précision (16 bits)
+                </label>
                 <label class="radio-label active">
                   <input
                     type="radio"
@@ -731,27 +1491,401 @@
               <input type="text" id="nombre-base" value="1A3" />
             </div>
             <div class="form-group">
-              <label for="base-source">Base source (2-36) :</label>
-              <input
-                type="number"
-                id="base-source"
-                value="16"
-                min="2"
-                max="36"
-              />
+              <label for="base-source">Base source :</label>
+              <select id="base-source">
+                <option value="2">Binaire (2)</option>
+                <option value="3">Base 3</option>
+                <option value="4">Base 4</option>
+                <option value="5">Base 5</option>
+                <option value="6">Base 6</option>
+                <option value="7">Base 7</option>
+                <option value="8">Octal (8)</option>
+                <option value="9">Base 9</option>
+                <option value="10">Décimal (10)</option>
+                <option value="11">Base 11</option>
+                <option value="12">Base 12</option>
+                <option value="13">Base 13</option>
+                <option value="14">Base 14</option>
+                <option value="15">Base 15</option>
+                <option value="16" selected>Hexadécimal (16)</option>
+                <option value="17">Base 17</option>
+                <option value="18">Base 18</option>
+                <option value="19">Base 19</option>
+                <option value="20">Base 20</option>
+                <option value="21">Base 21</option>
+                <option value="22">Base 22</option>
+                <option value="23">Base 23</option>
+                <option value="24">Base 24</option>
+                <option value="25">Base 25</option>
+                <option value="26">Base 26</option>
+                <option value="27">Base 27</option>
+                <option value="28">Base 28</option>
+                <option value="29">Base 29</option>
+                <option value="30">Base 30</option>
+                <option value="31">Base 31</option>
+                <option value="32">Base 32</option>
+                <option value="33">Base 33</option>
+                <option value="34">Base 34</option>
+                <option value="35">Base 35</option>
+                <option value="36">Base 36</option>
+              </select>
             </div>
             <div class="form-group">
-              <label for="base-cible">Base cible (2-36) :</label>
-              <input
-                type="number"
-                id="base-cible"
-                value="10"
-                min="2"
-                max="36"
-              />
+              <label for="base-cible">Base cible :</label>
+              <select id="base-cible">
+                <option value="2">Binaire (2)</option>
+                <option value="3">Base 3</option>
+                <option value="4">Base 4</option>
+                <option value="5">Base 5</option>
+                <option value="6">Base 6</option>
+                <option value="7">Base 7</option>
+                <option value="8">Octal (8)</option>
+                <option value="9">Base 9</option>
+                <option value="10" selected>Décimal (10)</option>
+                <option value="11">Base 11</option>
+                <option value="12">Base 12</option>
+                <option value="13">Base 13</option>
+                <option value="14">Base 14</option>
+                <option value="15">Base 15</option>
+                <option value="16">Hexadécimal (16)</option>
+                <option value="17">Base 17</option>
+                <option value="18">Base 18</option>
+                <option value="19">Base 19</option>
+                <option value="20">Base 20</option>
+                <option value="21">Base 21</option>
+                <option value="22">Base 22</option>
+                <option value="23">Base 23</option>
+                <option value="24">Base 24</option>
+                <option value="25">Base 25</option>
+                <option value="26">Base 26</option>
+                <option value="27">Base 27</option>
+                <option value="28">Base 28</option>
+                <option value="29">Base 29</option>
+                <option value="30">Base 30</option>
+                <option value="31">Base 31</option>
+                <option value="32">Base 32</option>
+                <option value="33">Base 33</option>
+                <option value="34">Base 34</option>
+                <option value="35">Base 35</option>
+                <option value="36">Base 36</option>
+              </select>
             </div>
             <button id="btn-conversion-base">Convertir</button>
             <div id="conversion-base-result"></div>
+          </div>
+
+          <!-- Section Opérations Arithmétiques (MISE À JOUR) -->
+          <div id="operations" class="section">
+            <h2>Opérations Arithmétiques Multi-Bases</h2>
+
+            <div class="form-group">
+              <label>Nombre d'opérandes :</label>
+              <select id="nombre-operandes">
+                <option value="2">2 nombres</option>
+                <option value="3">3 nombres</option>
+                <option value="4">4 nombres</option>
+                <option value="5">5 nombres</option>
+              </select>
+            </div>
+
+            <div id="operation-inputs-container" class="operation-inputs">
+              <!-- Les champs seront générés dynamiquement -->
+            </div>
+
+            <div class="form-group">
+              <label>Formats disponibles :</label>
+              <div class="format-buttons" id="format-selector">
+                <button class="format-btn active" data-format="normal">
+                  Normal
+                </button>
+                <button class="format-btn" data-format="sva">SVA</button>
+                <button class="format-btn" data-format="c1">
+                  Complément à 1
+                </button>
+                <button class="format-btn" data-format="c2">
+                  Complément à 2
+                </button>
+                <button class="format-btn" data-format="bcd">BCD</button>
+                <button class="format-btn" data-format="excess3">
+                  Excess-3
+                </button>
+                <button class="format-btn" data-format="gray">Code Gray</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Opération :</label>
+              <div class="operation-selector">
+                <button class="operation-btn" data-operation="+">
+                  Addition (+)
+                </button>
+                <button class="operation-btn" data-operation="-">
+                  Soustraction (-)
+                </button>
+                <button class="operation-btn" data-operation="*">
+                  Multiplication (×)
+                </button>
+                <button class="operation-btn" data-operation="/">
+                  Division (÷)
+                </button>
+                <button class="operation-btn" data-operation="&">
+                  ET logique (&)
+                </button>
+                <button class="operation-btn" data-operation="|">
+                  OU logique (|)
+                </button>
+                <button class="operation-btn" data-operation="^">
+                  XOR (^)
+                </button>
+                <button class="operation-btn" data-operation="%">
+                  Modulo (%)
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="result-base">Base du résultat :</label>
+              <select id="result-base">
+                <option value="2">Binaire (2)</option>
+                <option value="8">Octal (8)</option>
+                <option value="10" selected>Décimal (10)</option>
+                <option value="16">Hexadécimal (16)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Afficher les étapes détaillées :</label>
+              <input
+                type="checkbox"
+                id="show-steps"
+                checked
+                style="width: auto; margin-right: 10px"
+              />
+              <label for="show-steps" style="display: inline; color: #94a3b8"
+                >Voir les étapes de conversion</label
+              >
+            </div>
+
+            <button id="btn-operations">Calculer</button>
+            <div id="operations-result"></div>
+          </div>
+
+          <!-- Section Conversions Série -->
+          <div id="conversions-serie" class="section">
+            <h2>Conversions Série Personnalisées</h2>
+
+            <div class="form-group">
+              <label for="nombre-serie">Nombre :</label>
+              <input
+                type="text"
+                id="nombre-serie"
+                value="-13"
+                placeholder="Ex: -13, -1A, -1011"
+              />
+              <small style="color: #94a3b8; font-size: 0.9em"
+                >Utilisez - pour les nombres négatifs</small
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="base-serie">Base source :</label>
+              <select id="base-serie">
+                <option value="2">Binaire (2)</option>
+                <option value="3">Base 3</option>
+                <option value="4">Base 4</option>
+                <option value="5">Base 5</option>
+                <option value="6">Base 6</option>
+                <option value="7">Base 7</option>
+                <option value="8">Octal (8)</option>
+                <option value="9">Base 9</option>
+                <option value="10" selected>Décimal (10)</option>
+                <option value="11">Base 11</option>
+                <option value="12">Base 12</option>
+                <option value="13">Base 13</option>
+                <option value="14">Base 14</option>
+                <option value="15">Base 15</option>
+                <option value="16">Hexadécimal (16)</option>
+                <option value="17">Base 17</option>
+                <option value="18">Base 18</option>
+                <option value="19">Base 19</option>
+                <option value="20">Base 20</option>
+                <option value="21">Base 21</option>
+                <option value="22">Base 22</option>
+                <option value="23">Base 23</option>
+                <option value="24">Base 24</option>
+                <option value="25">Base 25</option>
+                <option value="26">Base 26</option>
+                <option value="27">Base 27</option>
+                <option value="28">Base 28</option>
+                <option value="29">Base 29</option>
+                <option value="30">Base 30</option>
+                <option value="31">Base 31</option>
+                <option value="32">Base 32</option>
+                <option value="33">Base 33</option>
+                <option value="34">Base 34</option>
+                <option value="35">Base 35</option>
+                <option value="36">Base 36</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Sélectionnez les conversions :</label>
+
+              <div style="margin-bottom: 15px; display: flex; gap: 10px">
+                <button
+                  type="button"
+                  id="select-all-btn"
+                  style="
+                    background: rgba(56, 189, 248, 0.2);
+                    border: 1px solid #38bdf8;
+                    color: #38bdf8;
+                    padding: 8px 15px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-size: 13px;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    flex: 1;
+                  "
+                >
+                  ✅ Tout sélectionner
+                </button>
+                <button
+                  type="button"
+                  id="deselect-all-btn"
+                  style="
+                    background: rgba(100, 116, 139, 0.2);
+                    border: 1px solid #64748b;
+                    color: #94a3b8;
+                    padding: 8px 15px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-size: 13px;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    flex: 1;
+                  "
+                >
+                  ❌ Tout désélectionner
+                </button>
+              </div>
+
+              <div class="radio-group" id="conversions-checklist">
+                <label class="radio-label">
+                  <input
+                    type="checkbox"
+                    class="conversion-check"
+                    value="decimal"
+                    checked
+                  />
+                  <span>Décimal (base 10)</span>
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="checkbox"
+                    class="conversion-check"
+                    value="sva"
+                    checked
+                  />
+                  <span>SVA</span>
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="checkbox"
+                    class="conversion-check"
+                    value="c1"
+                    checked
+                  />
+                  <span>Complément à 1</span>
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="checkbox"
+                    class="conversion-check"
+                    value="c2"
+                    checked
+                  />
+                  <span>Complément à 2</span>
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="checkbox"
+                    class="conversion-check"
+                    value="binaire"
+                    checked
+                  />
+                  <span>Binaire Naturel</span>
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="checkbox"
+                    class="conversion-check"
+                    value="gray"
+                  />
+                  <span>Code Gray</span>
+                </label>
+                <label class="radio-label">
+                  <input type="checkbox" class="conversion-check" value="bcd" />
+                  <span>BCD</span>
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="checkbox"
+                    class="conversion-check"
+                    value="excess3"
+                  />
+                  <span>Excess-3</span>
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="checkbox"
+                    class="conversion-check"
+                    value="base2"
+                  />
+                  <span>Binaire (base 2)</span>
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="checkbox"
+                    class="conversion-check"
+                    value="base8"
+                  />
+                  <span>Octal (base 8)</span>
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="checkbox"
+                    class="conversion-check"
+                    value="base16"
+                  />
+                  <span>Hexadécimal (base 16)</span>
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="checkbox"
+                    class="conversion-check"
+                    value="base32"
+                  />
+                  <span>Base 32</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="bits-serie"
+                >Nombre de bits (pour les formats binaires) :</label
+              >
+              <select id="bits-serie">
+                <option value="4">4 bits</option>
+                <option value="8">8 bits</option>
+                <option value="16">16 bits</option>
+                <option value="32" selected>32 bits</option>
+                <option value="64">64 bits</option>
+              </select>
+            </div>
+
+            <button id="btn-conversions-serie">Générer les Conversions</button>
+            <div id="conversions-serie-result"></div>
           </div>
 
           <!-- Section Base Commune -->
@@ -783,14 +1917,44 @@
               <input type="text" id="nombre-tableau" value="255" />
             </div>
             <div class="form-group">
-              <label for="base-tableau">Base source (2-36) :</label>
-              <input
-                type="number"
-                id="base-tableau"
-                value="10"
-                min="2"
-                max="36"
-              />
+              <label for="base-tableau">Base source :</label>
+              <select id="base-tableau">
+                <option value="2">Binaire (2)</option>
+                <option value="3">Base 3</option>
+                <option value="4">Base 4</option>
+                <option value="5">Base 5</option>
+                <option value="6">Base 6</option>
+                <option value="7">Base 7</option>
+                <option value="8">Octal (8)</option>
+                <option value="9">Base 9</option>
+                <option value="10" selected>Décimal (10)</option>
+                <option value="11">Base 11</option>
+                <option value="12">Base 12</option>
+                <option value="13">Base 13</option>
+                <option value="14">Base 14</option>
+                <option value="15">Base 15</option>
+                <option value="16">Hexadécimal (16)</option>
+                <option value="17">Base 17</option>
+                <option value="18">Base 18</option>
+                <option value="19">Base 19</option>
+                <option value="20">Base 20</option>
+                <option value="21">Base 21</option>
+                <option value="22">Base 22</option>
+                <option value="23">Base 23</option>
+                <option value="24">Base 24</option>
+                <option value="25">Base 25</option>
+                <option value="26">Base 26</option>
+                <option value="27">Base 27</option>
+                <option value="28">Base 28</option>
+                <option value="29">Base 29</option>
+                <option value="30">Base 30</option>
+                <option value="31">Base 31</option>
+                <option value="32">Base 32</option>
+                <option value="33">Base 33</option>
+                <option value="34">Base 34</option>
+                <option value="35">Base 35</option>
+                <option value="36">Base 36</option>
+              </select>
             </div>
             <button id="btn-tableau-bases">Générer le Tableau</button>
             <div id="tableau-bases-result"></div>
@@ -804,12 +1968,103 @@
           Codé par <a href="mailto:promaildzaier@gmail.com">LG_GHAZEL</a>
         </div>
         <div class="copyright">
-          &copy; 2025 Converso - Tous droits réservés
+          &copy; 2025 Converso Pro - Tous droits réservés
         </div>
       </div>
     </div>
 
+    <!-- Popup Mises à Jour -->
+    <div id="update-popup" class="alert-overlay" style="display: none">
+      <div class="alert-box">
+        <div class="alert-title">🚀 NOUVELLES FONCTIONNALITÉS !</div>
+
+        <div class="update-list">
+          <h4>Version 5.0 - Converso Pro</h4>
+          <ul>
+            <li>
+              <strong>Nombres négatifs</strong> : Support complet dans toutes
+              les bases (2-36)
+            </li>
+            <li>
+              <strong>Conversions série</strong> : Génération personnalisée de
+              plusieurs conversions en une fois
+            </li>
+            <li>
+              <strong>Checklist interactive</strong> : Sélectionnez uniquement
+              les conversions souhaitées
+            </li>
+            <li>
+              <strong>Sélecteurs améliorés</strong> : Choix de base avec menu
+              déroulant (flèche)
+            </li>
+            <li>
+              <strong>Interface améliorée</strong> : Design plus intuitif et
+              responsive
+            </li>
+            <li>
+              <strong>Conversion améliorée</strong> : Choix de la base source
+              pour SVA, C1, C2, BCD, Gray, Excess-3
+            </li>
+            <li>
+              <strong>Opérations arithmétiques</strong> : Calculs entre nombres
+              de bases différentes
+            </li>
+            <li>
+              <strong>Multi-opérandes</strong> : Jusqu'à 5 nombres pour une
+              opération
+            </li>
+            <li>
+              <strong>8 opérations</strong> : +, -, ×, ÷, ET, OU, XOR, Modulo
+            </li>
+            <li><strong>Choix de la base du résultat</strong></li>
+            <li><strong>Correction de bugs</strong></li>
+          </ul>
+
+          <p style="color: #cbd5e1; margin-top: 15px">
+            Essayez la nouvelle section
+            <strong>"Conversions Série"</strong> pour des conversions multiples
+            en un clic !
+          </p>
+        </div>
+
+        <button class="alert-close-btn" onclick="closeUpdatePopup()">
+          Commencer à utiliser
+        </button>
+      </div>
+    </div>
+
     <script>
+      // ==================== VARIABLES GLOBALES ====================
+      let isFirstVisit = true;
+      let currentOperation = "+";
+      let operationInputsCount = 2;
+      let currentFormat = "normal";
+
+      // ==================== INITIALISATION ====================
+      document.addEventListener("DOMContentLoaded", function () {
+        // Vérifier si c'est la première visite
+        if (!localStorage.getItem("converso_visited")) {
+          isFirstVisit = true;
+          localStorage.setItem("converso_visited", "true");
+          setTimeout(() => {
+            document.getElementById("update-popup").style.display = "flex";
+          }, 1000);
+        } else {
+          isFirstVisit = false;
+        }
+
+        // Initialiser les sections
+        initNavigation();
+        initConversionEntiers();
+        initVirguleFixe();
+        initOperations();
+        initConversionsSerie();
+        initOtherSections();
+
+        // Afficher un exemple au chargement
+        convertirEntier();
+      });
+
       // ==================== FONCTIONS DE NAVIGATION ====================
       function showSection(sectionId) {
         document.querySelectorAll(".section").forEach((section) => {
@@ -830,13 +2085,14 @@
         }
       }
 
-      // Initialisation de la navigation
-      document.querySelectorAll(".nav-btn").forEach((btn) => {
-        btn.addEventListener("click", function () {
-          const sectionId = this.getAttribute("data-section");
-          showSection(sectionId);
+      function initNavigation() {
+        document.querySelectorAll(".nav-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const sectionId = this.getAttribute("data-section");
+            showSection(sectionId);
+          });
         });
-      });
+      }
 
       // ==================== FONCTIONS DE BASE ====================
       function charToValue(c) {
@@ -856,13 +2112,74 @@
       }
 
       function validerNombreBase(nombre, base) {
-        for (let i = 0; i < nombre.length; i++) {
-          const valeur = charToValue(nombre[i]);
+        if (!nombre || nombre.length === 0) return false;
+
+        // Vérifier le signe négatif
+        let nombreSansSigne = nombre;
+        if (nombre[0] === "-") {
+          nombreSansSigne = nombre.substring(1);
+          if (nombreSansSigne.length === 0) return false; // Juste "-" n'est pas valide
+        }
+
+        // Valider chaque caractère
+        for (let i = 0; i < nombreSansSigne.length; i++) {
+          const valeur = charToValue(nombreSansSigne[i]);
           if (valeur === -1 || valeur >= base) {
             return false;
           }
         }
+
         return true;
+      }
+
+      function baseToDecimal(nombre, base) {
+        // Vérifier si le nombre commence par un signe négatif
+        let signe = 1;
+        let nombreAbsolu = nombre;
+
+        if (nombre[0] === "-") {
+          signe = -1;
+          nombreAbsolu = nombre.substring(1); // Retirer le signe négatif
+          if (nombreAbsolu.length === 0) {
+            throw new Error("Le nombre ne peut pas être seulement un signe -");
+          }
+        }
+
+        let resultat = 0;
+        for (let i = 0; i < nombreAbsolu.length; i++) {
+          const valeur = charToValue(nombreAbsolu[i]);
+          if (valeur === -1) {
+            throw new Error(
+              `Caractère invalide '${nombreAbsolu[i]}' pour la base ${base}`
+            );
+          }
+          if (valeur >= base) {
+            throw new Error(
+              `Chiffre '${nombreAbsolu[i]}' (valeur ${valeur}) invalide pour la base ${base}`
+            );
+          }
+          const puissance = nombreAbsolu.length - 1 - i;
+          resultat += valeur * Math.pow(base, puissance);
+        }
+
+        return resultat * signe;
+      }
+
+      function decimalToBase(decimal, base) {
+        if (decimal === 0) return "0";
+
+        let signe = decimal < 0 ? "-" : "";
+        let n = Math.abs(decimal);
+        let restes = [];
+
+        while (n > 0) {
+          const reste = n % base;
+          restes.push(valueToChar(reste));
+          n = Math.floor(n / base);
+        }
+
+        const resultat = restes.reverse().join("");
+        return signe + resultat;
       }
 
       function decimalVersBinaire(n, bits) {
@@ -879,30 +2196,116 @@
         while (temp > 0 && binaire.length < bits) {
           const reste = temp % 2;
           const quotient = Math.floor(temp / 2);
-          etapes += `${temp} ÷ 2 = ${quotient}, reste ${reste}\n`;
+          etapes += `Étape ${
+            binaire.length + 1
+          }: ${temp} ÷ 2 = ${quotient}, reste ${reste}\n`;
           binaire = reste + binaire;
           temp = quotient;
         }
 
         while (binaire.length < bits) {
           binaire = "0" + binaire;
-          etapes += `Ajout du bit 0 pour compléter à ${bits} bits\n`;
+          etapes += `Complétion: Ajout du bit 0 pour compléter à ${bits} bits\n`;
         }
 
         return { resultat: binaire, etapes: etapes };
       }
 
-      // ==================== CONVERSIONS ENTIÈRES ====================
-      function convertirSVA(n, bits) {
+      // ==================== FONCTIONS POUR LES ÉTAPES DE CONVERSION ====================
+      function genererEtapesConversion(
+        nombre,
+        baseSource,
+        formatCible,
+        bits = 32
+      ) {
+        const valeurDecimale = baseToDecimal(nombre, baseSource);
+        let etapes = `<div class="steps"><strong>Étapes de conversion de (${nombre})_${baseSource} vers ${formatCible}:</strong>\n`;
+
+        etapes += `<div class="conversion-step"><span class="step-number">1</span> Conversion en décimal: (${nombre})_${baseSource} = ${valeurDecimale}</div>`;
+
+        switch (formatCible) {
+          case "SVA":
+            etapes += `<div class="conversion-step"><span class="step-number">2</span> Détermination du signe: ${
+              valeurDecimale < 0 ? "négatif (bit = 1)" : "positif (bit = 0)"
+            }</div>`;
+            etapes += `<div class="conversion-step"><span class="step-number">3</span> Valeur absolue: ${Math.abs(
+              valeurDecimale
+            )}</div>`;
+            etapes += `<div class="conversion-step"><span class="step-number">4</span> Conversion en binaire sur ${
+              bits - 1
+            } bits</div>`;
+            break;
+
+          case "Complément à 1":
+            if (valeurDecimale >= 0) {
+              etapes += `<div class="conversion-step"><span class="step-number">2</span> Nombre positif → représentation binaire directe</div>`;
+            } else {
+              etapes += `<div class="conversion-step"><span class="step-number">2</span> Valeur absolue: ${Math.abs(
+                valeurDecimale
+              )}</div>`;
+              etapes += `<div class="conversion-step"><span class="step-number">3</span> Conversion en binaire</div>`;
+              etapes += `<div class="conversion-step"><span class="step-number">4</span> Inversion de tous les bits (0→1, 1→0)</div>`;
+            }
+            break;
+
+          case "Complément à 2":
+            if (valeurDecimale >= 0) {
+              etapes += `<div class="conversion-step"><span class="step-number">2</span> Nombre positif → représentation binaire directe</div>`;
+            } else {
+              etapes += `<div class="conversion-step"><span class="step-number">2</span> Valeur absolue: ${Math.abs(
+                valeurDecimale
+              )}</div>`;
+              etapes += `<div class="conversion-step"><span class="step-number">3</span> Conversion en binaire</div>`;
+              etapes += `<div class="conversion-step"><span class="step-number">4</span> Complément à 1 (inversion des bits)</div>`;
+              etapes += `<div class="conversion-step"><span class="step-number">5</span> Ajout de 1 au résultat</div>`;
+            }
+            break;
+
+          case "BCD":
+            const chiffres = Math.abs(valeurDecimale).toString().split("");
+            etapes += `<div class="conversion-step"><span class="step-number">2</span> Séparation des chiffres: ${chiffres.join(
+              ", "
+            )}</div>`;
+            etapes += `<div class="conversion-step"><span class="step-number">3</span> Conversion de chaque chiffre en 4 bits binaires</div>`;
+            break;
+
+          case "Excess-3":
+            const chiffresEx3 = Math.abs(valeurDecimale).toString().split("");
+            etapes += `<div class="conversion-step"><span class="step-number">2</span> Séparation des chiffres: ${chiffresEx3.join(
+              ", "
+            )}</div>`;
+            etapes += `<div class="conversion-step"><span class="step-number">3</span> Ajout de 3 à chaque chiffre</div>`;
+            etapes += `<div class="conversion-step"><span class="step-number">4</span> Conversion de chaque résultat en 4 bits binaires</div>`;
+            break;
+
+          case "Code Gray":
+            etapes += `<div class="conversion-step"><span class="step-number">2</span> Conversion en binaire sur ${bits} bits</div>`;
+            etapes += `<div class="conversion-step"><span class="step-number">3</span> Application du code Gray: MSB identique, chaque bit suivant = XOR des deux bits correspondants</div>`;
+            break;
+        }
+
+        etapes += `</div>`;
+        return etapes;
+      }
+
+      // ==================== CONVERSIONS ENTIÈRES (AMÉLIORÉES) ====================
+      function initConversionEntiers() {
+        document
+          .getElementById("btn-entier")
+          .addEventListener("click", convertirEntier);
+      }
+
+      function convertirSVA(n, bits, nombreOriginal, baseSource) {
         const valeurAbsolue = Math.abs(n);
         const binaireResult = decimalVersBinaire(valeurAbsolue, bits - 1);
         const bitSigne = n < 0 ? "1" : "0";
 
         const etapes =
-          `SVA (Signe-Valeur Absolue) pour ${n}:\n` +
-          `1. Bit de signe: ${bitSigne} (${n < 0 ? "négatif" : "positif"})\n` +
-          `2. Valeur absolue: ${valeurAbsolue}\n` +
-          `3. Conversion en binaire:\n${binaireResult.etapes}`;
+          `SVA (Signe-Valeur Absolue) pour (${nombreOriginal})_${baseSource} (décimal: ${n}):\n` +
+          `1. Conversion en décimal: (${nombreOriginal})_${baseSource} = ${n}\n` +
+          `2. Bit de signe: ${bitSigne} (${n < 0 ? "négatif" : "positif"})\n` +
+          `3. Valeur absolue: ${valeurAbsolue}\n` +
+          `4. Conversion en binaire:\n${binaireResult.etapes}`;
 
         return {
           resultat: bitSigne + " " + binaireResult.resultat,
@@ -910,14 +2313,15 @@
         };
       }
 
-      function convertirComplement1(n, bits) {
+      function convertirComplement1(n, bits, nombreOriginal, baseSource) {
         if (n >= 0) {
           const binaireResult = decimalVersBinaire(n, bits);
           return {
             resultat: binaireResult.resultat,
             etapes:
-              `Complément à 1 pour ${n} (positif):\n` +
-              `Nombre positif → représentation normale\n${binaireResult.etapes}`,
+              `Complément à 1 pour (${nombreOriginal})_${baseSource} (décimal: ${n}):\n` +
+              `1. Conversion en décimal: (${nombreOriginal})_${baseSource} = ${n}\n` +
+              `2. Nombre positif → représentation normale\n${binaireResult.etapes}`,
           };
         } else {
           const valeurAbsolue = Math.abs(n);
@@ -934,42 +2338,45 @@
           return {
             resultat: c1,
             etapes:
-              `Complément à 1 pour ${n} (négatif):\n` +
-              `1. Valeur absolue: ${valeurAbsolue}\n` +
-              `2. Conversion en binaire:\n${binaireResult.etapes}` +
-              `3. ${inversionEtapes}`,
+              `Complément à 1 pour (${nombreOriginal})_${baseSource} (décimal: ${n}):\n` +
+              `1. Conversion en décimal: (${nombreOriginal})_${baseSource} = ${n}\n` +
+              `2. Valeur absolue: ${valeurAbsolue}\n` +
+              `3. Conversion en binaire:\n${binaireResult.etapes}` +
+              `4. ${inversionEtapes}`,
           };
         }
       }
 
-      function convertirComplement2(n, bits) {
+      function convertirComplement2(n, bits, nombreOriginal, baseSource) {
         if (n >= 0) {
           const binaireResult = decimalVersBinaire(n, bits);
           return {
             resultat: binaireResult.resultat,
             etapes:
-              `Complément à 2 pour ${n} (positif):\n` +
-              `Nombre positif → représentation normale\n${binaireResult.etapes}`,
+              `Complément à 2 pour (${nombreOriginal})_${baseSource} (décimal: ${n}):\n` +
+              `1. Conversion en décimal: (${nombreOriginal})_${baseSource} = ${n}\n` +
+              `2. Nombre positif → représentation normale\n${binaireResult.etapes}`,
           };
         } else {
           const valeurAbsolue = Math.abs(n);
           const binaireResult = decimalVersBinaire(valeurAbsolue, bits);
           let c1 = "";
           let etapes =
-            `Complément à 2 pour ${n} (négatif):\n` +
-            `1. Valeur absolue: ${valeurAbsolue}\n` +
-            `2. Conversion en binaire:\n${binaireResult.etapes}`;
+            `Complément à 2 pour (${nombreOriginal})_${baseSource} (décimal: ${n}):\n` +
+            `1. Conversion en décimal: (${nombreOriginal})_${baseSource} = ${n}\n` +
+            `2. Valeur absolue: ${valeurAbsolue}\n` +
+            `3. Conversion en binaire:\n${binaireResult.etapes}`;
 
           // Étape 1: Complément à 1
           for (let i = 0; i < binaireResult.resultat.length; i++) {
             c1 += binaireResult.resultat[i] === "0" ? "1" : "0";
           }
-          etapes += `3. Complément à 1 (inversion): ${c1}\n`;
+          etapes += `4. Complément à 1 (inversion): ${c1}\n`;
 
           // Étape 2: Ajouter 1
           let c2 = "";
           let retenue = 1;
-          let additionEtapes = "4. Ajout de 1:\n";
+          let additionEtapes = "5. Ajout de 1:\n";
 
           for (let i = c1.length - 1; i >= 0; i--) {
             const bit = parseInt(c1[i]) + retenue;
@@ -990,23 +2397,28 @@
       }
 
       function decimalVersBCD(n) {
-        if (n === 0) return { resultat: "0000", etapes: "BCD pour 0: 0000" };
+        if (n === 0)
+          return {
+            resultat: "0000",
+            etapes: "BCD pour 0:\n1. Chiffre: 0\n2. Conversion: 0 → 0000",
+          };
 
+        const signe = n < 0 ? "-" : "";
         const chiffres = Math.abs(n).toString().split("");
         let bcd = "";
         let etapes = `BCD pour ${n}:\n`;
 
-        for (let chiffre of chiffres) {
-          const valeur = parseInt(chiffre);
+        for (let i = 0; i < chiffres.length; i++) {
+          const valeur = parseInt(chiffres[i]);
           const binaire = valeur.toString(2).padStart(4, "0");
           bcd += binaire + " ";
-          etapes += `  Chiffre ${chiffre} → ${valeur
+          etapes += `${i + 1}. Chiffre ${i + 1}: ${chiffres[i]} → ${valeur
             .toString(2)
             .padStart(4, "0")}\n`;
         }
 
         return {
-          resultat: bcd.trim(),
+          resultat: signe + bcd.trim(),
           etapes: etapes,
         };
       }
@@ -1015,23 +2427,27 @@
         if (n === 0)
           return {
             resultat: "0011",
-            etapes: "Excess-3 pour 0: 0011 (0 + 3 = 3)",
+            etapes:
+              "Excess-3 pour 0:\n1. Chiffre: 0\n2. 0 + 3 = 3\n3. Conversion: 3 → 0011",
           };
 
+        const signe = n < 0 ? "-" : "";
         const chiffres = Math.abs(n).toString().split("");
         let excess3 = "";
         let etapes = `Excess-3 pour ${n}:\n`;
 
-        for (let chiffre of chiffres) {
-          const valeur = parseInt(chiffre);
+        for (let i = 0; i < chiffres.length; i++) {
+          const valeur = parseInt(chiffres[i]);
           const exc3 = valeur + 3;
           const binaire = exc3.toString(2).padStart(4, "0");
           excess3 += binaire + " ";
-          etapes += `  Chiffre ${chiffre} + 3 = ${exc3} → ${binaire}\n`;
+          etapes += `${i + 1}. Chiffre ${i + 1}: ${
+            chiffres[i]
+          } + 3 = ${exc3} → ${binaire}\n`;
         }
 
         return {
-          resultat: excess3.trim(),
+          resultat: signe + excess3.trim(),
           etapes: etapes,
         };
       }
@@ -1040,14 +2456,14 @@
         let gray = binaire[0];
         let etapes =
           `Conversion Gray pour ${binaire}:\n` +
-          `Bit 0: ${binaire[0]} → ${gray}\n`;
+          `1. MSB: ${binaire[0]} → ${gray} (identique)\n`;
 
         for (let i = 1; i < binaire.length; i++) {
           const bitGray = (
             parseInt(binaire[i - 1]) ^ parseInt(binaire[i])
           ).toString();
           gray += bitGray;
-          etapes += `Bit ${i}: ${binaire[i - 1]} XOR ${
+          etapes += `${i + 1}. Bit ${i}: ${binaire[i - 1]} XOR ${
             binaire[i]
           } = ${bitGray} → ${gray}\n`;
         }
@@ -1058,10 +2474,148 @@
         };
       }
 
-      // ==================== VIRGULE FIXE CORRIGÉE ====================
-      function convertirVirguleFixe(n, bitsEntier, bitsFraction) {
-        console.log("Conversion virgule fixe:", n, bitsEntier, bitsFraction);
+      function convertirEntier() {
+        const nombre = document
+          .getElementById("entier-input")
+          .value.toUpperCase();
+        const baseSource = parseInt(
+          document.getElementById("entier-base").value
+        );
+        const bits = parseInt(document.getElementById("bits-input").value);
 
+        // Validation
+        if (!validerNombreBase(nombre, baseSource)) {
+          document.getElementById("entier-result").innerHTML =
+            '<div class="error">Erreur: Le nombre contient des caractères invalides pour la base ' +
+            baseSource +
+            "</div>";
+          return;
+        }
+
+        // Conversion en décimal
+        let decimalValue;
+        try {
+          decimalValue = baseToDecimal(nombre, baseSource);
+        } catch (error) {
+          document.getElementById(
+            "entier-result"
+          ).innerHTML = `<div class="error">${error.message}</div>`;
+          return;
+        }
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>Résultats pour (${nombre}) en base ${baseSource} (décimal: ${decimalValue}, ${bits} bits)</h3>`;
+
+        // SVA
+        const sva = convertirSVA(decimalValue, bits, nombre, baseSource);
+        resultatHTML += `<div class="conversion-card">
+                        <h4>🔢 SVA (Signe-Valeur Absolue)</h4>
+                        <div class="binary-display">${sva.resultat}</div>
+                        <div class="steps">${sva.etapes}</div>
+                    </div>`;
+
+        // Complément à 1
+        const c1 = convertirComplement1(decimalValue, bits, nombre, baseSource);
+        resultatHTML += `<div class="conversion-card">
+                        <h4>🔄 Complément à 1</h4>
+                        <div class="binary-display">${c1.resultat}</div>
+                        <div class="steps">${c1.etapes}</div>
+                    </div>`;
+
+        // Complément à 2
+        const c2 = convertirComplement2(decimalValue, bits, nombre, baseSource);
+        resultatHTML += `<div class="conversion-card">
+                        <h4>🔁 Complément à 2</h4>
+                        <div class="binary-display">${c2.resultat}</div>
+                        <div class="steps">${c2.etapes}</div>
+                    </div>`;
+
+        // Binaire naturel
+        const binaire = decimalVersBinaire(Math.abs(decimalValue), bits);
+        resultatHTML += `<div class="conversion-card">
+                        <h4>⚡ Binaire Naturel</h4>
+                        <div class="binary-display">${binaire.resultat}</div>
+                        <div class="steps">${binaire.etapes}</div>
+                    </div>`;
+
+        // Code Gray
+        const gray = binaireVersGray(binaire.resultat);
+        resultatHTML += `<div class="conversion-card">
+                        <h4>🎯 Code Gray</h4>
+                        <div class="binary-display">${gray.resultat}</div>
+                        <div class="steps">${gray.etapes}</div>
+                    </div>`;
+
+        // BCD
+        const bcd = decimalVersBCD(decimalValue);
+        resultatHTML += `<div class="conversion-card">
+                        <h4>🔢 BCD</h4>
+                        <div class="binary-display">${bcd.resultat}</div>
+                        <div class="steps">${bcd.etapes}</div>
+                    </div>`;
+
+        // Excess-3
+        const excess3 = decimalVersExcess3(decimalValue);
+        resultatHTML += `<div class="conversion-card">
+                        <h4>📈 Excess-3</h4>
+                        <div class="binary-display">${excess3.resultat}</div>
+                        <div class="steps">${excess3.etapes}</div>
+                    </div>`;
+
+        resultatHTML += "</div>";
+        document.getElementById("entier-result").innerHTML = resultatHTML;
+      }
+
+      // ==================== VIRGULE FIXE ====================
+      function initVirguleFixe() {
+        document
+          .getElementById("btn-virgule-fixe")
+          .addEventListener("click", convertirVirguleFixeInterface);
+
+        document.querySelectorAll(".precision-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            document.querySelectorAll(".precision-btn").forEach((b) => {
+              b.classList.remove("active");
+            });
+            this.classList.add("active");
+
+            const bitsEntier = this.getAttribute("data-bits-entier");
+            const bitsFraction = this.getAttribute("data-bits-fraction");
+
+            document.getElementById("bits-entier").value = bitsEntier;
+            document.getElementById("bits-fraction").value = bitsFraction;
+          });
+        });
+      }
+
+      function convertirVirguleFixeInterface() {
+        const n = parseFloat(document.getElementById("reel-input").value);
+        const bitsEntier = parseInt(
+          document.getElementById("bits-entier").value
+        );
+        const bitsFraction = parseInt(
+          document.getElementById("bits-fraction").value
+        );
+
+        if (isNaN(n) || isNaN(bitsEntier) || isNaN(bitsFraction)) {
+          document.getElementById("virgule-fixe-result").innerHTML =
+            '<div class="error">Erreur: Veuillez entrer des valeurs valides</div>';
+          return;
+        }
+
+        const resultat = convertirVirguleFixe(n, bitsEntier, bitsFraction);
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>Résultat Virgule Fixe</h3>`;
+        resultatHTML += `<p>Format: ${bitsEntier} bits entier + ${bitsFraction} bits fraction</p>`;
+        resultatHTML += `<div class="binary-display">${resultat.resultat}</div>`;
+        resultatHTML += `<div class="steps">${resultat.etapes}</div>`;
+        resultatHTML += "</div>";
+
+        document.getElementById("virgule-fixe-result").innerHTML = resultatHTML;
+      }
+
+      function convertirVirguleFixe(n, bitsEntier, bitsFraction) {
         if (isNaN(n)) {
           return {
             resultat: "Erreur",
@@ -1108,7 +2662,6 @@
 
           if (tempFraction === 0) {
             etapes += `   → La partie fractionnaire est terminée (reste = 0)\n`;
-            // Remplir avec des zéros
             while (fractionBin.length < bitsFraction) {
               fractionBin += "0";
             }
@@ -1116,7 +2669,6 @@
           }
         }
 
-        // S'assurer que la fraction a la bonne longueur
         while (fractionBin.length < bitsFraction) {
           fractionBin += "0";
         }
@@ -1137,7 +2689,943 @@
         };
       }
 
-      // ==================== VIRGULE FLOTTANTE ====================
+      // ==================== OPÉRATIONS ARITHMÉTIQUES (MISE À JOUR) ====================
+      function initOperations() {
+        document
+          .getElementById("nombre-operandes")
+          .addEventListener("change", updateOperationInputs);
+
+        // Gestion des boutons d'opération
+        document.querySelectorAll(".operation-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            document
+              .querySelectorAll(".operation-btn")
+              .forEach((b) => b.classList.remove("active"));
+            this.classList.add("active");
+            currentOperation = this.getAttribute("data-operation");
+          });
+        });
+
+        // Gestion des boutons de format
+        document.querySelectorAll(".format-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            document
+              .querySelectorAll(".format-btn")
+              .forEach((b) => b.classList.remove("active"));
+            this.classList.add("active");
+            currentFormat = this.getAttribute("data-format");
+            updateOperationInputs();
+          });
+        });
+
+        document
+          .querySelector('.operation-btn[data-operation="+"]')
+          .classList.add("active");
+
+        document
+          .getElementById("btn-operations")
+          .addEventListener("click", calculerOperations);
+
+        updateOperationInputs();
+      }
+
+      function updateOperationInputs() {
+        const container = document.getElementById("operation-inputs-container");
+        const count = parseInt(
+          document.getElementById("nombre-operandes").value
+        );
+
+        container.innerHTML = "";
+
+        for (let i = 0; i < count; i++) {
+          const inputGroup = document.createElement("div");
+          inputGroup.className = "operation-input-group";
+
+          let typeOptions = "";
+          if (currentFormat === "normal") {
+            typeOptions = `
+                        <option value="2">Binaire (2)</option>
+                        <option value="8" ${
+                          i === 1 ? "selected" : ""
+                        }>Octal (8)</option>
+                        <option value="10" ${
+                          i === 0 ? "selected" : ""
+                        }>Décimal (10)</option>
+                        <option value="16">Hexadécimal (16)</option>
+                    `;
+          } else {
+            // Pour les formats spéciaux, on utilise toujours la base 2
+            typeOptions = `
+                        <option value="2" selected>Binaire (2)</option>
+                    `;
+          }
+
+          inputGroup.innerHTML = `
+                    <div class="number-input-group">
+                        <label>Nombre ${i + 1}</label>
+                        <input type="text" class="operation-number" value="${
+                          i === 0 ? "1010" : i === 1 ? "110" : "0"
+                        }" placeholder="Valeur">
+                        <small style="color: #94a3b8">Format: ${currentFormat}</small>
+                    </div>
+                    <div class="number-input-group">
+                        <label>Base</label>
+                        <select class="operation-base">
+                            ${typeOptions}
+                        </select>
+                    </div>
+                    <div class="number-input-group">
+                        <label>Type</label>
+                        <input type="text" class="operation-type-display" value="${currentFormat}" readonly style="background: rgba(30, 41, 59, 0.6); cursor: not-allowed;">
+                        <input type="hidden" class="operation-type" value="${currentFormat}">
+                    </div>
+                `;
+          container.appendChild(inputGroup);
+        }
+      }
+
+      function convertirFormatSpecial(valeurDecimale, format, bits = 32) {
+        switch (format) {
+          case "sva":
+            const sva = convertirSVA(
+              valeurDecimale,
+              bits,
+              valeurDecimale.toString(),
+              10
+            );
+            return {
+              valeur: valeurDecimale,
+              representation: sva.resultat,
+              etapes: sva.etapes,
+            };
+
+          case "c1":
+            const c1 = convertirComplement1(
+              valeurDecimale,
+              bits,
+              valeurDecimale.toString(),
+              10
+            );
+            return {
+              valeur: valeurDecimale,
+              representation: c1.resultat,
+              etapes: c1.etapes,
+            };
+
+          case "c2":
+            const c2 = convertirComplement2(
+              valeurDecimale,
+              bits,
+              valeurDecimale.toString(),
+              10
+            );
+            return {
+              valeur: valeurDecimale,
+              representation: c2.resultat,
+              etapes: c2.etapes,
+            };
+
+          case "bcd":
+            const bcd = decimalVersBCD(valeurDecimale);
+            return {
+              valeur: valeurDecimale,
+              representation: bcd.resultat,
+              etapes: bcd.etapes,
+            };
+
+          case "excess3":
+            const excess3 = decimalVersExcess3(valeurDecimale);
+            return {
+              valeur: valeurDecimale,
+              representation: excess3.resultat,
+              etapes: excess3.etapes,
+            };
+
+          case "gray":
+            const binaireGray = decimalVersBinaire(
+              Math.abs(valeurDecimale),
+              bits
+            );
+            const gray = binaireVersGray(binaireGray.resultat);
+            return {
+              valeur: valeurDecimale,
+              representation: gray.resultat,
+              etapes: gray.etapes,
+            };
+
+          default:
+            return {
+              valeur: valeurDecimale,
+              representation: valeurDecimale.toString(),
+              etapes: `Format normal: ${valeurDecimale}`,
+            };
+        }
+      }
+
+      function calculerOperations() {
+        const numbers = document.querySelectorAll(".operation-number");
+        const bases = document.querySelectorAll(".operation-base");
+        const types = document.querySelectorAll(".operation-type");
+        const resultBase = parseInt(
+          document.getElementById("result-base").value
+        );
+        const showSteps = document.getElementById("show-steps").checked;
+
+        let valeurs = [];
+        let etapesHTML = `<h4>📊 Calcul détaillé :</h4>`;
+        let valeursDecimals = [];
+
+        for (let i = 0; i < numbers.length; i++) {
+          const nombre = numbers[i].value.toUpperCase();
+          const base = parseInt(bases[i].value);
+          const type = types[i].value;
+
+          if (!validerNombreBase(nombre, base)) {
+            document.getElementById(
+              "operations-result"
+            ).innerHTML = `<div class="error">Erreur: Le nombre ${
+              i + 1
+            } contient des caractères invalides pour la base ${base}</div>`;
+            return;
+          }
+
+          let valeurDecimale;
+          try {
+            valeurDecimale = baseToDecimal(nombre, base);
+          } catch (error) {
+            document.getElementById(
+              "operations-result"
+            ).innerHTML = `<div class="error">Erreur nombre ${i + 1}: ${
+              error.message
+            }</div>`;
+            return;
+          }
+
+          // Conversion selon le format
+          const resultatFormat = convertirFormatSpecial(valeurDecimale, type);
+          valeurs.push(resultatFormat);
+          valeursDecimals.push(resultatFormat.valeur);
+
+          if (showSteps) {
+            let etapeText = `<div class="steps"><strong>Nombre ${
+              i + 1
+            }:</strong> (${nombre})_${base}`;
+
+            if (type !== "normal") {
+              etapeText += ` [Format: ${type.toUpperCase()}]`;
+            }
+
+            etapeText += `<br>Valeur décimale: ${valeurDecimale}`;
+
+            if (type !== "normal") {
+              etapeText += `<br>Représentation ${type.toUpperCase()}: ${
+                resultatFormat.representation
+              }`;
+            }
+
+            etapeText += `</div>`;
+            etapesHTML += etapeText;
+
+            // Ajouter les étapes de conversion détaillées
+            if (type !== "normal") {
+              etapesHTML += genererEtapesConversion(
+                nombre,
+                base,
+                type.toUpperCase()
+              );
+            }
+          }
+        }
+
+        let resultatDecimal;
+        let operationSymbol = currentOperation;
+        let operationText = `\nOpération: ${valeurs[0].valeur}`;
+
+        switch (currentOperation) {
+          case "+":
+            resultatDecimal = valeursDecimals.reduce((a, b) => a + b);
+            valeursDecimals
+              .slice(1)
+              .forEach((v) => (operationText += ` + ${v}`));
+            break;
+          case "-":
+            resultatDecimal = valeursDecimals.reduce((a, b) => a - b);
+            valeursDecimals
+              .slice(1)
+              .forEach((v) => (operationText += ` - ${v}`));
+            break;
+          case "*":
+            resultatDecimal = valeursDecimals.reduce((a, b) => a * b);
+            valeursDecimals
+              .slice(1)
+              .forEach((v) => (operationText += ` × ${v}`));
+            operationSymbol = "×";
+            break;
+          case "/":
+            resultatDecimal = valeursDecimals.reduce((a, b) => a / b);
+            valeursDecimals
+              .slice(1)
+              .forEach((v) => (operationText += ` ÷ ${v}`));
+            operationSymbol = "÷";
+            break;
+          case "&":
+            resultatDecimal = valeursDecimals.reduce((a, b) => a & b);
+            valeursDecimals
+              .slice(1)
+              .forEach((v) => (operationText += ` & ${v}`));
+            break;
+          case "|":
+            resultatDecimal = valeursDecimals.reduce((a, b) => a | b);
+            valeursDecimals
+              .slice(1)
+              .forEach((v) => (operationText += ` | ${v}`));
+            break;
+          case "^":
+            resultatDecimal = valeursDecimals.reduce((a, b) => a ^ b);
+            valeursDecimals
+              .slice(1)
+              .forEach((v) => (operationText += ` ^ ${v}`));
+            break;
+          case "%":
+            resultatDecimal = valeursDecimals.reduce((a, b) => a % b);
+            valeursDecimals
+              .slice(1)
+              .forEach((v) => (operationText += ` % ${v}`));
+            break;
+        }
+
+        operationText += ` = ${resultatDecimal}`;
+
+        if (showSteps) {
+          etapesHTML += `<div class="steps">${operationText}</div>`;
+        }
+
+        const resultatConverti = decimalToBase(resultatDecimal, resultBase);
+
+        if (showSteps) {
+          etapesHTML += `<div class="steps">Conversion en base ${resultBase}: ${resultatDecimal} → (${resultatConverti})_${resultBase}</div>`;
+        }
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>Résultat de l'opération</h3>`;
+        resultatHTML += `<div class="binary-display">${resultatConverti}<sub>${resultBase}</sub></div>`;
+        resultatHTML += `<div class="steps">Valeur décimale: ${resultatDecimal}</div>`;
+
+        if (showSteps) {
+          resultatHTML += etapesHTML;
+        }
+
+        resultatHTML += "</div>";
+
+        document.getElementById("operations-result").innerHTML = resultatHTML;
+      }
+
+      // ==================== CONVERSIONS SÉRIE ====================
+      function initConversionsSerie() {
+        document
+          .getElementById("btn-conversions-serie")
+          .addEventListener("click", genererConversionsSerie);
+
+        // Boutons Tout sélectionner/désélectionner
+        const selectAllBtn = document.getElementById("select-all-btn");
+        const deselectAllBtn = document.getElementById("deselect-all-btn");
+
+        if (selectAllBtn) {
+          selectAllBtn.addEventListener("click", function () {
+            document.querySelectorAll(".conversion-check").forEach((cb) => {
+              cb.checked = true;
+              // Déclencher l'événement change pour mettre à jour le style
+              cb.dispatchEvent(new Event("change"));
+            });
+          });
+        }
+
+        if (deselectAllBtn) {
+          deselectAllBtn.addEventListener("click", function () {
+            document.querySelectorAll(".conversion-check").forEach((cb) => {
+              cb.checked = false;
+              // Déclencher l'événement change pour mettre à jour le style
+              cb.dispatchEvent(new Event("change"));
+            });
+          });
+        }
+      }
+
+      function genererConversionsSerie() {
+        const nombre = document
+          .getElementById("nombre-serie")
+          .value.toUpperCase();
+        const baseSource = parseInt(
+          document.getElementById("base-serie").value
+        );
+        const bits = parseInt(document.getElementById("bits-serie").value);
+
+        if (!validerNombreBase(nombre, baseSource)) {
+          document.getElementById(
+            "conversions-serie-result"
+          ).innerHTML = `<div class="error">Erreur: Le nombre contient des caractères invalides pour la base ${baseSource}</div>`;
+          return;
+        }
+
+        const conversionsSelectionnees = [];
+        document
+          .querySelectorAll(".conversion-check:checked")
+          .forEach((checkbox) => {
+            conversionsSelectionnees.push(checkbox.value);
+          });
+
+        if (conversionsSelectionnees.length === 0) {
+          document.getElementById(
+            "conversions-serie-result"
+          ).innerHTML = `<div class="error">Veuillez sélectionner au moins une conversion</div>`;
+          return;
+        }
+
+        let valeurDecimale;
+        try {
+          valeurDecimale = baseToDecimal(nombre, baseSource);
+        } catch (error) {
+          document.getElementById(
+            "conversions-serie-result"
+          ).innerHTML = `<div class="error">${error.message}</div>`;
+          return;
+        }
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>Conversions de (${nombre})<sub>${baseSource}</sub> = ${valeurDecimale}<sub>10</sub></h3>`;
+
+        conversionsSelectionnees.forEach((conv) => {
+          let cardHTML = '<div class="conversion-card">';
+
+          switch (conv) {
+            case "decimal":
+              cardHTML += `<h4>🔢 Décimal</h4>`;
+              cardHTML += `<div class="binary-display">${valeurDecimale}<sub>10</sub></div>`;
+              cardHTML += `<div class="steps">Valeur décimale: ${valeurDecimale}</div>`;
+              break;
+
+            case "sva":
+              const sva = convertirSVA(
+                valeurDecimale,
+                bits,
+                nombre,
+                baseSource
+              );
+              cardHTML += `<h4>🔢 SVA (${bits} bits)</h4>`;
+              cardHTML += `<div class="binary-display">${sva.resultat}</div>`;
+              cardHTML += `<div class="steps">${sva.etapes}</div>`;
+              break;
+
+            case "c1":
+              const c1 = convertirComplement1(
+                valeurDecimale,
+                bits,
+                nombre,
+                baseSource
+              );
+              cardHTML += `<h4>🔄 Complément à 1 (${bits} bits)</h4>`;
+              cardHTML += `<div class="binary-display">${c1.resultat}</div>`;
+              cardHTML += `<div class="steps">${c1.etapes}</div>`;
+              break;
+
+            case "c2":
+              const c2 = convertirComplement2(
+                valeurDecimale,
+                bits,
+                nombre,
+                baseSource
+              );
+              cardHTML += `<h4>🔁 Complément à 2 (${bits} bits)</h4>`;
+              cardHTML += `<div class="binary-display">${c2.resultat}</div>`;
+              cardHTML += `<div class="steps">${c2.etapes}</div>`;
+              break;
+
+            case "binaire":
+              const binaire = decimalVersBinaire(
+                Math.abs(valeurDecimale),
+                bits
+              );
+              cardHTML += `<h4>⚡ Binaire Naturel (${bits} bits)</h4>`;
+              cardHTML += `<div class="binary-display">${binaire.resultat}</div>`;
+              cardHTML += `<div class="steps">${binaire.etapes}</div>`;
+              break;
+
+            case "gray":
+              const binaireGray = decimalVersBinaire(
+                Math.abs(valeurDecimale),
+                bits
+              );
+              const gray = binaireVersGray(binaireGray.resultat);
+              cardHTML += `<h4>🎯 Code Gray (${bits} bits)</h4>`;
+              cardHTML += `<div class="binary-display">${gray.resultat}</div>`;
+              cardHTML += `<div class="steps">${gray.etapes}</div>`;
+              break;
+
+            case "bcd":
+              const bcd = decimalVersBCD(valeurDecimale);
+              cardHTML += `<h4>🔢 BCD</h4>`;
+              cardHTML += `<div class="binary-display">${bcd.resultat}</div>`;
+              cardHTML += `<div class="steps">${bcd.etapes}</div>`;
+              break;
+
+            case "excess3":
+              const excess3 = decimalVersExcess3(valeurDecimale);
+              cardHTML += `<h4>📈 Excess-3</h4>`;
+              cardHTML += `<div class="binary-display">${excess3.resultat}</div>`;
+              cardHTML += `<div class="steps">${excess3.etapes}</div>`;
+              break;
+
+            case "base2":
+              const base2 = decimalToBase(valeurDecimale, 2);
+              cardHTML += `<h4>⚡ Binaire</h4>`;
+              cardHTML += `<div class="binary-display">${base2}<sub>2</sub></div>`;
+              cardHTML += `<div class="steps">${valeurDecimale} en base 2 = ${base2}</div>`;
+              break;
+
+            case "base8":
+              const base8 = decimalToBase(valeurDecimale, 8);
+              cardHTML += `<h4>🔄 Octal</h4>`;
+              cardHTML += `<div class="binary-display">${base8}<sub>8</sub></div>`;
+              cardHTML += `<div class="steps">${valeurDecimale} en base 8 = ${base8}</div>`;
+              break;
+
+            case "base16":
+              const base16 = decimalToBase(valeurDecimale, 16);
+              cardHTML += `<h4>🔷 Hexadécimal</h4>`;
+              cardHTML += `<div class="binary-display">${base16}<sub>16</sub></div>`;
+              cardHTML += `<div class="steps">${valeurDecimale} en base 16 = ${base16}</div>`;
+              break;
+
+            case "base32":
+              const base32 = decimalToBase(valeurDecimale, 32);
+              cardHTML += `<h4>📊 Base 32</h4>`;
+              cardHTML += `<div class="binary-display">${base32}<sub>32</sub></div>`;
+              cardHTML += `<div class="steps">${valeurDecimale} en base 32 = ${base32}</div>`;
+              break;
+          }
+
+          cardHTML += "</div>";
+          resultatHTML += cardHTML;
+        });
+
+        resultatHTML += "</div>";
+        document.getElementById("conversions-serie-result").innerHTML =
+          resultatHTML;
+      }
+
+      // ==================== AUTRES SECTIONS ====================
+      function initOtherSections() {
+        document
+          .getElementById("btn-virgule-flottante")
+          .addEventListener("click", convertirVirguleFlottante);
+        document
+          .getElementById("btn-conversion-base")
+          .addEventListener("click", convertirBase);
+        document
+          .getElementById("btn-base-commune")
+          .addEventListener("click", trouverBaseCommune);
+        document
+          .getElementById("btn-tableau-bases")
+          .addEventListener("click", genererTableau);
+
+        document.querySelectorAll(".radio-input").forEach((radio) => {
+          radio.addEventListener("change", function () {
+            document.querySelectorAll(".radio-label").forEach((label) => {
+              label.classList.remove("active");
+            });
+            this.closest(".radio-label").classList.add("active");
+          });
+        });
+      }
+
+      function convertirVirguleFlottante() {
+        const n = parseFloat(document.getElementById("float-input").value);
+        const precision = document.querySelector(
+          'input[name="precision"]:checked'
+        ).value;
+
+        let resultat;
+        if (precision === "double") {
+          resultat = doubleToIEEE754(n);
+        } else if (precision === "half") {
+          resultat = halfToIEEE754(n);
+        } else {
+          resultat = floatToIEEE754(n);
+        }
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>Résultat Virgule Flottante IEEE 754 `;
+
+        if (precision === "double") {
+          resultatHTML += "(Double Précision)";
+        } else if (precision === "half") {
+          resultatHTML += "(Demi-précision)";
+        } else {
+          resultatHTML += "(Simple Précision)";
+        }
+
+        resultatHTML += `</h3>`;
+        resultatHTML += `<div class="binary-display">${resultat.representation}</div>`;
+        resultatHTML += `<div class="steps">${resultat.etapes}</div>`;
+        resultatHTML += "</div>";
+
+        document.getElementById("virgule-flottante-result").innerHTML =
+          resultatHTML;
+      }
+
+      function halfToIEEE754(n) {
+        // Conversion en demi-précision (16 bits)
+        const signe = n < 0 ? 1 : 0;
+        const absN = Math.abs(n);
+
+        if (absN === 0) {
+          return {
+            signe: "0",
+            exposant: "00000",
+            mantisse: "0000000000",
+            representation: "0 00000 0000000000",
+            etapes: `Demi-précision pour ${n}:\n1. Signe: ${signe}\n2. Nombre = 0 → représentation spéciale\n3. Résultat: 0 00000 0000000000`,
+          };
+        }
+
+        // Gestion de l'infini
+        if (!isFinite(absN)) {
+          return {
+            signe: signe.toString(),
+            exposant: "11111",
+            mantisse: "0000000000",
+            representation: `${signe} 11111 0000000000`,
+            etapes: `Demi-précision pour ${n} (${n > 0 ? "+" : "-"}infini)`,
+          };
+        }
+
+        // Gestion de NaN
+        if (isNaN(absN)) {
+          return {
+            signe: "0",
+            exposant: "11111",
+            mantisse: "1111111111",
+            representation: "0 11111 1111111111",
+            etapes: `Demi-précision pour ${n} (NaN)`,
+          };
+        }
+
+        // Conversion manuelle pour demi-précision
+        let exposant = 15; // biais
+        let mantisse = absN;
+
+        // Normalisation
+        if (mantisse >= 2) {
+          while (mantisse >= 2) {
+            mantisse /= 2;
+            exposant++;
+          }
+        } else if (mantisse < 1) {
+          while (mantisse < 1) {
+            mantisse *= 2;
+            exposant--;
+          }
+        }
+
+        mantisse -= 1; // Supprimer le 1 implicite
+
+        // Convertir mantisse en binaire (10 bits)
+        let mantisseBin = "";
+        let tempMantisse = mantisse;
+        for (let i = 0; i < 10; i++) {
+          tempMantisse *= 2;
+          mantisseBin += Math.floor(tempMantisse);
+          tempMantisse -= Math.floor(tempMantisse);
+        }
+
+        // Convertir exposant en binaire (5 bits)
+        const exposantBin = exposant.toString(2).padStart(5, "0");
+        const signeBin = signe.toString();
+
+        const representation = `${signeBin} ${exposantBin} ${mantisseBin}`;
+
+        const etapes =
+          `CONVERSION IEEE 754 DEMI-PRÉCISION pour ${n}\n` +
+          `1. REPRÉSENTATION MACHINE (16 bits):\n` +
+          `   ${signeBin} ${exposantBin} ${mantisseBin}\n` +
+          `   |   |-----| |----------|\n` +
+          `   |  Exposant   Mantisse\n` +
+          `  Signe (5 bits) (10 bits)\n\n` +
+          `2. DÉCOMPOSITION:\n` +
+          `   - Signe: ${signeBin} (${signe === 1 ? "négatif" : "positif"})\n` +
+          `   - Exposant: ${exposantBin} (décalé: ${exposant})\n` +
+          `   - Mantisse: ${mantisseBin}\n\n` +
+          `3. REPRÉSENTATION SCIENTIFIQUE:\n` +
+          `   (-1)^${signe} × 1.${mantisseBin} × 2^${exposant - 15}`;
+
+        return {
+          signe: signeBin,
+          exposant: exposantBin,
+          mantisse: mantisseBin,
+          representation: representation,
+          etapes: etapes,
+        };
+      }
+
+      function convertirBase() {
+        const nombre = document
+          .getElementById("nombre-base")
+          .value.toUpperCase();
+        const baseSource = parseInt(
+          document.getElementById("base-source").value
+        );
+        const baseCible = parseInt(document.getElementById("base-cible").value);
+
+        if (!validerNombreBase(nombre, baseSource)) {
+          document.getElementById("conversion-base-result").innerHTML =
+            '<div class="error">Erreur: Le nombre contient des caractères invalides pour la base source</div>';
+          return;
+        }
+
+        const valeurDecimale = baseToDecimal(nombre, baseSource);
+        const resultat = decimalToBase(valeurDecimale, baseCible);
+
+        // Générer les étapes de conversion
+        let etapesHTML = `<h4>Étapes de conversion :</h4>`;
+
+        // Étape 1: Conversion en décimal
+        let etapeDecimal = `<div class="conversion-step"><span class="step-number">1</span> Conversion de (${nombre})_${baseSource} en décimal:</div>`;
+        let calculDecimal = "";
+        for (let i = 0; i < nombre.length; i++) {
+          const valeur = charToValue(nombre[i]);
+          const puissance = nombre.length - 1 - i;
+          const terme = valeur * Math.pow(baseSource, puissance);
+          calculDecimal += `${valeur}×${baseSource}^${puissance}`;
+          if (i < nombre.length - 1) calculDecimal += " + ";
+        }
+        calculDecimal += ` = ${valeurDecimale}`;
+        etapeDecimal += `<div class="steps" style="margin-left: 30px;">${calculDecimal}</div>`;
+        etapesHTML += etapeDecimal;
+
+        // Étape 2: Conversion vers la base cible
+        let etapeCible = `<div class="conversion-step"><span class="step-number">2</span> Conversion de ${valeurDecimale} en base ${baseCible}:</div>`;
+        let temp = Math.abs(valeurDecimale);
+        let restes = [];
+        let calculCible = "";
+        let step = 1;
+
+        while (temp > 0) {
+          const reste = temp % baseCible;
+          const quotient = Math.floor(temp / baseCible);
+          restes.push(valueToChar(reste));
+          calculCible += `Étape ${step}: ${temp} ÷ ${baseCible} = ${quotient}, reste ${reste} (${valueToChar(
+            reste
+          )})<br>`;
+          temp = quotient;
+          step++;
+        }
+
+        if (valeurDecimale === 0) {
+          calculCible = "Nombre 0 → résultat: 0";
+        } else {
+          const resultatInverse = restes.reverse().join("");
+          const signe = valeurDecimale < 0 ? "-" : "";
+          calculCible += `Lecture des restes de bas en haut: ${signe}${resultatInverse}`;
+        }
+
+        etapeCible += `<div class="steps" style="margin-left: 30px;">${calculCible}</div>`;
+        etapesHTML += etapeCible;
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>Résultat de Conversion</h3>`;
+        resultatHTML += `<p><strong>(${nombre})<sub>${baseSource}</sub> = (${resultat})<sub>${baseCible}</sub></strong></p>`;
+        resultatHTML += `<div class="steps">Valeur décimale intermédiaire: ${valeurDecimale}</div>`;
+        resultatHTML += etapesHTML;
+        resultatHTML += "</div>";
+
+        document.getElementById("conversion-base-result").innerHTML =
+          resultatHTML;
+      }
+
+      function trouverBaseCommune() {
+        const nombre1 = document
+          .getElementById("nombre1-base")
+          .value.toUpperCase();
+        const nombre2 = document
+          .getElementById("nombre2-base")
+          .value.toUpperCase();
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>🔍 Recherche de Base Inconnue</h3>`;
+        resultatHTML += `<p>On cherche la base X où <strong>(${nombre2})<sub>X</sub> = (${nombre1})<sub>10</sub></strong></p>`;
+
+        const valeurCible = parseInt(nombre1);
+
+        if (isNaN(valeurCible)) {
+          resultatHTML +=
+            '<div class="error">Erreur: Le premier nombre doit être un nombre décimal valide</div>';
+          resultatHTML += "</div>";
+          document.getElementById("base-commune-result").innerHTML =
+            resultatHTML;
+          return;
+        }
+
+        resultatHTML += `<div class="steps">Valeur décimale cible: ${valeurCible}</div>`;
+
+        const basesTrouvees = [];
+        let etapesDetaillees = `<h4>📊 Détail des calculs:</h4>`;
+
+        const chiffres = nombre2.split("").map((c) => charToValue(c));
+        const baseMin = Math.max(2, ...chiffres.map((v) => v + 1));
+
+        etapesDetaillees += `<div class="steps">Base minimale à tester: ${baseMin} (chiffre maximum: ${Math.max(
+          ...chiffres
+        )})</div>`;
+
+        for (let base = baseMin; base <= 36; base++) {
+          let valeurTest = 0;
+          let etapesConversion = `Base ${base}: `;
+
+          for (let i = 0; i < nombre2.length; i++) {
+            const valeur = charToValue(nombre2[i]);
+            const puissance = nombre2.length - 1 - i;
+            const terme = valeur * Math.pow(base, puissance);
+            valeurTest += terme;
+
+            etapesConversion += `${valeur}×${base}^${puissance}`;
+            if (i < nombre2.length - 1) etapesConversion += " + ";
+          }
+
+          etapesConversion += ` = ${valeurTest}`;
+
+          const egalite = valeurTest === valeurCible;
+          const symbole = egalite ? "✅" : "❌";
+
+          etapesDetaillees += `<div class="steps">${etapesConversion} ${symbole}</div>`;
+
+          if (egalite) {
+            basesTrouvees.push({
+              base: base,
+              valeur: valeurTest,
+              etapes: etapesConversion,
+            });
+            break;
+          }
+
+          if (valeurTest > valeurCible) {
+            etapesDetaillees += `<div class="steps warning">La valeur dépasse la cible, arrêt de la recherche</div>`;
+            break;
+          }
+        }
+
+        if (basesTrouvees.length > 0) {
+          resultatHTML += '<div class="success"><h4>🎉 BASE TROUVÉE:</h4>';
+          for (let base of basesTrouvees) {
+            resultatHTML += `<div class="conversion-card">`;
+            resultatHTML += `<h4>Base ${base.base}</h4>`;
+            resultatHTML += `<p><strong>(${nombre2})<sub>${base.base}</sub> = (${nombre1})<sub>10</sub> = ${base.valeur}</strong></p>`;
+            resultatHTML += `<div class="steps">${base.etapes}</div>`;
+            resultatHTML += `</div>`;
+          }
+          resultatHTML += "</div>";
+        } else {
+          resultatHTML += '<div class="error"><h4>❌ AUCUNE BASE TROUVÉE</h4>';
+          resultatHTML += `<p>Aucune base entre ${baseMin} et 36 ne satisfait l'équation.</p>`;
+          resultatHTML += "</div>";
+        }
+
+        resultatHTML += etapesDetaillees;
+        resultatHTML += "</div>";
+
+        document.getElementById("base-commune-result").innerHTML = resultatHTML;
+      }
+
+      function genererTableau() {
+        const nombre = document
+          .getElementById("nombre-tableau")
+          .value.toUpperCase();
+        const baseSource = parseInt(
+          document.getElementById("base-tableau").value
+        );
+
+        if (!validerNombreBase(nombre, baseSource)) {
+          document.getElementById("tableau-bases-result").innerHTML =
+            '<div class="error">Erreur: Le nombre contient des caractères invalides pour la base source</div>';
+          return;
+        }
+
+        const valeurDecimale = baseToDecimal(nombre, baseSource);
+
+        let resultatHTML = '<div class="result-box">';
+        resultatHTML += `<h3>Tableau de Conversion Multi-Bases</h3>`;
+        resultatHTML += `<p>Nombre: <strong>${nombre}</strong> en base ${baseSource} (décimal: ${valeurDecimale})</p>`;
+
+        resultatHTML += '<div class="scroll-container">';
+        resultatHTML += '<table class="table">';
+        resultatHTML +=
+          "<tr><th>Base</th><th>Représentation</th><th>Valeur Décimale</th><th>Étapes</th></tr>";
+
+        for (let base = 2; base <= 16; base++) {
+          const representation = decimalToBase(valeurDecimale, base);
+          const etapes = `Divisions successives par ${base}`;
+          resultatHTML += `<tr>
+                            <td>${base}</td>
+                            <td><strong>${representation}</strong><sub>${base}</sub></td>
+                            <td>${valeurDecimale}</td>
+                            <td><button class="toggle-steps-btn" onclick="afficherEtapesBase(${valeurDecimale}, ${base})">Voir étapes</button></td>
+                        </tr>`;
+        }
+
+        resultatHTML += "</table>";
+        resultatHTML += "</div>";
+        resultatHTML += "</div>";
+
+        document.getElementById("tableau-bases-result").innerHTML =
+          resultatHTML;
+      }
+
+      function afficherEtapesBase(valeurDecimale, base) {
+        const modal = document.createElement("div");
+        modal.className = "alert-overlay";
+        modal.innerHTML = `
+                <div class="alert-box" style="max-width: 600px;">
+                    <div class="alert-title">Étapes de conversion en base ${base}</div>
+                    <div class="steps" style="text-align: left; max-height: 400px; overflow-y: auto;">
+                        ${genererEtapesConversionBase(valeurDecimale, base)}
+                    </div>
+                    <button class="alert-close-btn" onclick="this.parentElement.parentElement.remove()">
+                        Fermer
+                    </button>
+                </div>
+            `;
+        document.body.appendChild(modal);
+      }
+
+      function genererEtapesConversionBase(valeurDecimale, base) {
+        let etapes = `<strong>Conversion de ${valeurDecimale} en base ${base}:</strong><br><br>`;
+        let temp = Math.abs(valeurDecimale);
+        let restes = [];
+        let step = 1;
+
+        if (valeurDecimale === 0) {
+          etapes += `Nombre 0 → résultat: 0`;
+          return etapes;
+        }
+
+        while (temp > 0) {
+          const reste = temp % base;
+          const quotient = Math.floor(temp / base);
+          const char = valueToChar(reste);
+          restes.push(char);
+
+          etapes += `<div class="conversion-step"><span class="step-number">${step}</span> ${temp} ÷ ${base} = ${quotient}, reste ${reste} → ${char}</div>`;
+          temp = quotient;
+          step++;
+        }
+
+        const resultat =
+          (valeurDecimale < 0 ? "-" : "") + restes.reverse().join("");
+        etapes += `<br><strong>Résultat final:</strong> Lecture des restes de bas en haut: ${resultat}<sub>${base}</sub>`;
+
+        return etapes;
+      }
+
+      // ==================== FONCTIONS IEEE 754 ====================
       function floatToIEEE754(n) {
         const buffer = new ArrayBuffer(4);
         const view = new DataView(buffer);
@@ -1222,378 +3710,6 @@
         };
       }
 
-      // ==================== CONVERSION DE BASE ====================
-      function baseToDecimalDetail(nombre, base) {
-        let resultat = 0;
-        let etapes =
-          `CONVERSION BASE ${base} → DÉCIMAL\n` +
-          `Nombre: (${nombre}) en base ${base}\n\n` +
-          `1. FORME POLYNOMIALE:\n` +
-          `   P(x) = `;
-
-        let calculDetaille = `\n2. CALCUL DÉTAILLÉ:\n`;
-
-        for (let i = 0; i < nombre.length; i++) {
-          const valeur = charToValue(nombre[i]);
-          const puissance = nombre.length - 1 - i;
-          const terme = valeur * Math.pow(base, puissance);
-
-          etapes += `${valeur}×${base}^${puissance}`;
-          if (i < nombre.length - 1) etapes += " + ";
-
-          calculDetaille += `   ${
-            nombre[i]
-          } × ${base}^${puissance} = ${valeur} × ${Math.pow(
-            base,
-            puissance
-          )} = ${terme}\n`;
-
-          resultat += terme;
-        }
-
-        etapes += `\n\n3. SOMME: ${resultat}`;
-
-        return {
-          valeur: resultat,
-          etapes: etapes + calculDetaille,
-        };
-      }
-
-      function decimalToBaseDetail(decimal, base) {
-        if (decimal === 0)
-          return {
-            valeur: "0",
-            etapes: `CONVERSION DÉCIMAL → BASE ${base}\n0 ÷ ${base} = 0, reste 0\n\nRésultat: 0`,
-          };
-
-        let n = decimal;
-        let restes = [];
-        let etapes =
-          `CONVERSION DÉCIMAL → BASE ${base}\n` +
-          `Nombre: ${decimal}\n\n` +
-          `1. DIVISION SUCCESSIVE:\n`;
-
-        while (n > 0) {
-          const reste = n % base;
-          const quotient = Math.floor(n / base);
-          const caractere = valueToChar(reste);
-
-          etapes += `   ${n} ÷ ${base} = ${quotient}, reste ${reste} → '${caractere}'\n`;
-
-          restes.push(caractere);
-          n = quotient;
-        }
-
-        const resultat = restes.reverse().join("");
-
-        etapes += `\n2. LECTURE DES RESTES (de bas en haut): ${resultat}`;
-
-        return {
-          valeur: resultat,
-          etapes: etapes,
-        };
-      }
-
-      // ==================== BASE COMMUNE CORRIGÉE ====================
-      function trouverBaseCommune() {
-        const nombre1 = document
-          .getElementById("nombre1-base")
-          .value.toUpperCase();
-        const nombre2 = document
-          .getElementById("nombre2-base")
-          .value.toUpperCase();
-
-        let resultatHTML = '<div class="result-box">';
-        resultatHTML += `<h3>🔍 Recherche de Base Inconnue</h3>`;
-        resultatHTML += `<p>On cherche la base X où <strong>(${nombre2})<sub>X</sub> = (${nombre1})<sub>10</sub></strong></p>`;
-
-        // Convertir le premier nombre (décimal) en valeur numérique
-        const valeurCible = parseInt(nombre1);
-
-        if (isNaN(valeurCible)) {
-          resultatHTML +=
-            '<div class="error">Erreur: Le premier nombre doit être un nombre décimal valide</div>';
-          resultatHTML += "</div>";
-          document.getElementById("base-commune-result").innerHTML =
-            resultatHTML;
-          return;
-        }
-
-        resultatHTML += `<div class="steps">Valeur décimale cible: ${valeurCible}</div>`;
-
-        const basesTrouvees = [];
-        let etapesDetaillees = `<h4>📊 Détail des calculs:</h4>`;
-
-        // Trouver la base minimale possible
-        const chiffres = nombre2.split("").map((c) => charToValue(c));
-        const baseMin = Math.max(2, ...chiffres.map((v) => v + 1));
-
-        etapesDetaillees += `<div class="steps">Base minimale à tester: ${baseMin} (chiffre maximum: ${Math.max(
-          ...chiffres
-        )})</div>`;
-
-        for (let base = baseMin; base <= 36; base++) {
-          let valeurTest = 0;
-          let etapesConversion = `Base ${base}: `;
-
-          // Conversion avec affichage des étapes
-          for (let i = 0; i < nombre2.length; i++) {
-            const valeur = charToValue(nombre2[i]);
-            const puissance = nombre2.length - 1 - i;
-            const terme = valeur * Math.pow(base, puissance);
-            valeurTest += terme;
-
-            etapesConversion += `${valeur}×${base}^${puissance}`;
-            if (i < nombre2.length - 1) etapesConversion += " + ";
-          }
-
-          etapesConversion += ` = ${valeurTest}`;
-
-          const egalite = valeurTest === valeurCible;
-          const symbole = egalite ? "✅" : "❌";
-
-          etapesDetaillees += `<div class="steps">${etapesConversion} ${symbole}</div>`;
-
-          if (egalite) {
-            basesTrouvees.push({
-              base: base,
-              valeur: valeurTest,
-              etapes: etapesConversion,
-            });
-
-            // Arrêter la recherche si on a trouvé une solution
-            break;
-          }
-
-          // Si la valeur dépasse déjà la cible, arrêter la recherche
-          if (valeurTest > valeurCible) {
-            etapesDetaillees += `<div class="steps warning">La valeur dépasse la cible, arrêt de la recherche</div>`;
-            break;
-          }
-        }
-
-        if (basesTrouvees.length > 0) {
-          resultatHTML += '<div class="success"><h4>🎉 BASE TROUVÉE:</h4>';
-          for (let base of basesTrouvees) {
-            resultatHTML += `<div class="conversion-card">`;
-            resultatHTML += `<h4>Base ${base.base}</h4>`;
-            resultatHTML += `<p><strong>(${nombre2})<sub>${base.base}</sub> = (${nombre1})<sub>10</sub> = ${base.valeur}</strong></p>`;
-            resultatHTML += `<div class="steps">${base.etapes}</div>`;
-            resultatHTML += `</div>`;
-          }
-          resultatHTML += "</div>";
-        } else {
-          resultatHTML += '<div class="error"><h4>❌ AUCUNE BASE TROUVÉE</h4>';
-          resultatHTML += `<p>Aucune base entre ${baseMin} et 36 ne satisfait l'équation.</p>`;
-          resultatHTML += "</div>";
-        }
-
-        resultatHTML += etapesDetaillees;
-        resultatHTML += "</div>";
-
-        document.getElementById("base-commune-result").innerHTML = resultatHTML;
-      }
-
-      // ==================== FONCTIONS D'INTERFACE ====================
-      function convertirEntier() {
-        const n = parseInt(document.getElementById("entier-input").value);
-        const bits = parseInt(document.getElementById("bits-input").value);
-
-        let resultatHTML = '<div class="result-box">';
-        resultatHTML += `<h3>Résultats pour ${n} (${bits} bits)</h3>`;
-
-        // SVA
-        const sva = convertirSVA(n, bits);
-        resultatHTML += `<div class="conversion-card">
-                    <h4>🔢 SVA (Signe-Valeur Absolue)</h4>
-                    <div class="binary-display">${sva.resultat}</div>
-                    <div class="steps">${sva.etapes}</div>
-                </div>`;
-
-        // Complément à 1
-        const c1 = convertirComplement1(n, bits);
-        resultatHTML += `<div class="conversion-card">
-                    <h4>🔄 Complément à 1</h4>
-                    <div class="binary-display">${c1.resultat}</div>
-                    <div class="steps">${c1.etapes}</div>
-                </div>`;
-
-        // Complément à 2
-        const c2 = convertirComplement2(n, bits);
-        resultatHTML += `<div class="conversion-card">
-                    <h4>🔁 Complément à 2</h4>
-                    <div class="binary-display">${c2.resultat}</div>
-                    <div class="steps">${c2.etapes}</div>
-                </div>`;
-
-        // Binaire naturel
-        const binaire = decimalVersBinaire(Math.abs(n), bits);
-        resultatHTML += `<div class="conversion-card">
-                    <h4>⚡ Binaire Naturel</h4>
-                    <div class="binary-display">${binaire.resultat}</div>
-                    <div class="steps">${binaire.etapes}</div>
-                </div>`;
-
-        // Code Gray
-        const gray = binaireVersGray(binaire.resultat);
-        resultatHTML += `<div class="conversion-card">
-                    <h4>🎯 Code Gray</h4>
-                    <div class="binary-display">${gray.resultat}</div>
-                    <div class="steps">${gray.etapes}</div>
-                </div>`;
-
-        // BCD
-        const bcd = decimalVersBCD(n);
-        resultatHTML += `<div class="conversion-card">
-                    <h4>🔢 BCD</h4>
-                    <div class="binary-display">${bcd.resultat}</div>
-                    <div class="steps">${bcd.etapes}</div>
-                </div>`;
-
-        // Excess-3
-        const excess3 = decimalVersExcess3(n);
-        resultatHTML += `<div class="conversion-card">
-                    <h4>📈 Excess-3</h4>
-                    <div class="binary-display">${excess3.resultat}</div>
-                    <div class="steps">${excess3.etapes}</div>
-                </div>`;
-
-        resultatHTML += "</div>";
-        document.getElementById("entier-result").innerHTML = resultatHTML;
-      }
-
-      function convertirVirguleFixeInterface() {
-        const n = parseFloat(document.getElementById("reel-input").value);
-        const bitsEntier = parseInt(
-          document.getElementById("bits-entier").value
-        );
-        const bitsFraction = parseInt(
-          document.getElementById("bits-fraction").value
-        );
-
-        console.log("Données reçues:", n, bitsEntier, bitsFraction);
-
-        if (isNaN(n) || isNaN(bitsEntier) || isNaN(bitsFraction)) {
-          document.getElementById("virgule-fixe-result").innerHTML =
-            '<div class="error">Erreur: Veuillez entrer des valeurs valides</div>';
-          return;
-        }
-
-        const resultat = convertirVirguleFixe(n, bitsEntier, bitsFraction);
-
-        let resultatHTML = '<div class="result-box">';
-        resultatHTML += `<h3>Résultat Virgule Fixe</h3>`;
-        resultatHTML += `<p>Format: ${bitsEntier} bits entier + ${bitsFraction} bits fraction</p>`;
-        resultatHTML += `<div class="binary-display">${resultat.resultat}</div>`;
-        resultatHTML += `<div class="steps">${resultat.etapes}</div>`;
-        resultatHTML += "</div>";
-
-        document.getElementById("virgule-fixe-result").innerHTML = resultatHTML;
-      }
-
-      function convertirVirguleFlottante() {
-        const n = parseFloat(document.getElementById("float-input").value);
-        const precision = document.querySelector(
-          'input[name="precision"]:checked'
-        ).value;
-
-        let resultat;
-        if (precision === "double") {
-          resultat = doubleToIEEE754(n);
-        } else {
-          resultat = floatToIEEE754(n);
-        }
-
-        let resultatHTML = '<div class="result-box">';
-        resultatHTML += `<h3>Résultat Virgule Flottante IEEE 754 ${
-          precision === "double" ? "(Double Précision)" : "(Simple Précision)"
-        }</h3>`;
-        resultatHTML += `<div class="binary-display">${resultat.representation}</div>`;
-        resultatHTML += `<div class="steps">${resultat.etapes}</div>`;
-        resultatHTML += "</div>";
-
-        document.getElementById("virgule-flottante-result").innerHTML =
-          resultatHTML;
-      }
-
-      function convertirBase() {
-        const nombre = document
-          .getElementById("nombre-base")
-          .value.toUpperCase();
-        const baseSource = parseInt(
-          document.getElementById("base-source").value
-        );
-        const baseCible = parseInt(document.getElementById("base-cible").value);
-
-        if (!validerNombreBase(nombre, baseSource)) {
-          document.getElementById("conversion-base-result").innerHTML =
-            '<div class="error">Erreur: Le nombre contient des caractères invalides pour la base source</div>';
-          return;
-        }
-
-        const conversionDecimal = baseToDecimalDetail(nombre, baseSource);
-        const conversionBase = decimalToBaseDetail(
-          conversionDecimal.valeur,
-          baseCible
-        );
-
-        let resultatHTML = '<div class="result-box">';
-        resultatHTML += `<h3>Résultat de Conversion</h3>`;
-        resultatHTML += `<p><strong>${nombre}</strong> en base ${baseSource} = <strong>${conversionBase.valeur}</strong> en base ${baseCible}</p>`;
-        resultatHTML += `<p>Valeur décimale: ${conversionDecimal.valeur}</p>`;
-        resultatHTML += `<div class="steps">${conversionDecimal.etapes}</div>`;
-        resultatHTML += `<div class="steps">${conversionBase.etapes}</div>`;
-        resultatHTML += "</div>";
-
-        document.getElementById("conversion-base-result").innerHTML =
-          resultatHTML;
-      }
-
-      function genererTableau() {
-        const nombre = document
-          .getElementById("nombre-tableau")
-          .value.toUpperCase();
-        const baseSource = parseInt(
-          document.getElementById("base-tableau").value
-        );
-
-        if (!validerNombreBase(nombre, baseSource)) {
-          document.getElementById("tableau-bases-result").innerHTML =
-            '<div class="error">Erreur: Le nombre contient des caractères invalides pour la base source</div>';
-          return;
-        }
-
-        const valeurDecimale = baseToDecimalDetail(nombre, baseSource).valeur;
-
-        let resultatHTML = '<div class="result-box">';
-        resultatHTML += `<h3>Tableau de Conversion Multi-Bases</h3>`;
-        resultatHTML += `<p>Nombre: <strong>${nombre}</strong> en base ${baseSource} (décimal: ${valeurDecimale})</p>`;
-
-        resultatHTML += '<div class="scroll-container">';
-        resultatHTML += '<table class="table">';
-        resultatHTML +=
-          "<tr><th>Base</th><th>Représentation</th><th>Valeur Décimale</th></tr>";
-
-        for (let base = 2; base <= 16; base++) {
-          const representation = decimalToBaseDetail(
-            valeurDecimale,
-            base
-          ).valeur;
-          resultatHTML += `<tr>
-                        <td>${base}</td>
-                        <td><strong>${representation}</strong><sub>${base}</sub></td>
-                        <td>${valeurDecimale}</td>
-                    </tr>`;
-        }
-
-        resultatHTML += "</table>";
-        resultatHTML += "</div>";
-        resultatHTML += "</div>";
-
-        document.getElementById("tableau-bases-result").innerHTML =
-          resultatHTML;
-      }
-
       // ==================== FONCTIONS DE DONATION ====================
       function showDonationInfo() {
         const overlay = document.createElement("div");
@@ -1602,28 +3718,28 @@
         const alertBox = document.createElement("div");
         alertBox.className = "alert-box";
         alertBox.innerHTML = `
-    <div class="alert-title">💝 Soutenez ce projet</div>
-    <p style="color: #cbd5e1; margin-bottom: 20px;">Votre soutien aide à maintenir et améliorer cette application</p>
-    
-    <div class="account-info">
-        <div class="account-label">📱 BaridiMob :</div>
-        <div class="account-number">00799999004393611035</div>
-        
-        <div class="account-label">🏦 Compte CCP :</div>
-        <div class="account-number">004 393 611 0</div>
-        
-        <div class="account-label">🔑 Clé :</div>
-        <div class="account-number">32</div>
-    </div>
-    
-    <p style="color: #cbd5e1; font-size: 0.9em; margin-top: 15px;">
-        Merci pour votre générosité ! 🙏
-    </p>
-    
-    <button class="alert-close-btn" onclick="closeDonationAlert()">
-        Fermer
-    </button>
-`;
+                    <div class="alert-title">💝 Soutenez ce projet</div>
+                    <p style="color: #cbd5e1; margin-bottom: 20px;">Votre soutien aide à maintenir et améliorer cette application</p>
+                    
+                    <div class="account-info">
+                        <div class="account-label">📱 BaridiMob :</div>
+                        <div class="account-number">00799999004393611035</div>
+                        
+                        <div class="account-label">🏦 Compte CCP :</div>
+                        <div class="account-number">004 393 611 0</div>
+                        
+                        <div class="account-label">🔑 Clé :</div>
+                        <div class="account-number">32</div>
+                    </div>
+                    
+                    <p style="color: #cbd5e1; font-size: 0.9em; margin-top: 15px;">
+                        Merci pour votre générosité ! 🙏
+                    </p>
+                    
+                    <button class="alert-close-btn" onclick="closeDonationAlert()">
+                        Fermer
+                    </button>
+                `;
 
         overlay.appendChild(alertBox);
         document.body.appendChild(overlay);
@@ -1642,66 +3758,16 @@
         }
       }
 
-      // ==================== GESTION DE LA PRÉCISION ====================
-      document.querySelectorAll(".precision-btn").forEach((btn) => {
-        btn.addEventListener("click", function () {
-          // Retirer la classe active de tous les boutons
-          document.querySelectorAll(".precision-btn").forEach((b) => {
-            b.classList.remove("active");
-          });
+      function closeUpdatePopup() {
+        document.getElementById("update-popup").style.display = "none";
+      }
 
-          // Ajouter la classe active au bouton cliqué
-          this.classList.add("active");
-
-          // Mettre à jour les champs avec les valeurs du bouton
-          const bitsEntier = this.getAttribute("data-bits-entier");
-          const bitsFraction = this.getAttribute("data-bits-fraction");
-
-          document.getElementById("bits-entier").value = bitsEntier;
-          document.getElementById("bits-fraction").value = bitsFraction;
-        });
-      });
-
-      // Gestion des radio buttons pour la virgule flottante
-      document.querySelectorAll(".radio-input").forEach((radio) => {
-        radio.addEventListener("change", function () {
-          document.querySelectorAll(".radio-label").forEach((label) => {
-            label.classList.remove("active");
-          });
-          this.closest(".radio-label").classList.add("active");
-        });
-      });
-
-      // ==================== ÉCOUTEURS D'ÉVÉNEMENTS ====================
-      document
-        .getElementById("btn-entier")
-        .addEventListener("click", convertirEntier);
-      document
-        .getElementById("btn-virgule-fixe")
-        .addEventListener("click", convertirVirguleFixeInterface);
-      document
-        .getElementById("btn-virgule-flottante")
-        .addEventListener("click", convertirVirguleFlottante);
-      document
-        .getElementById("btn-conversion-base")
-        .addEventListener("click", convertirBase);
-      document
-        .getElementById("btn-base-commune")
-        .addEventListener("click", trouverBaseCommune);
-      document
-        .getElementById("btn-tableau-bases")
-        .addEventListener("click", genererTableau);
-
-      // Fermer avec la touche Echap
+      // ==================== GESTION DU CLAVIER ====================
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") {
           closeDonationAlert();
+          closeUpdatePopup();
         }
-      });
-
-      // ==================== INITIALISATION ====================
-      document.addEventListener("DOMContentLoaded", function () {
-        convertirEntier(); // Afficher un exemple au chargement
       });
     </script>
   </body>
